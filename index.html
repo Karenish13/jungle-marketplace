@@ -2,32 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jungle Marketplace</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUNGLE Marketplace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-          <h1> Jungle</h1>
-          <p>Repair Reuse Reduce</p>
-
+    <header class="app-header">
+        <div class="brand">
+            <span class="logo-placeholder">🧭</span>
+            <h1>JUNGLE ♻</h1>
+        </div>
+        <p>Repair • Reuse • Reduce</p>
     </header>
 
-  <main>
-      <h2>Give Your Electronics a Second Life</h2>
-    
-      <p>
-        Buy compatible replacement parts or sell 
-        your broken and unwanted electronics.
-      </p>
+    <main>
+        <section class="search-section">
+            <input
+                type="search"
+                id="marketplace-search"
+                placeholder="Search devices, parts, or models..."
+                aria-label="Search marketplace"
+            >
+            <button type="button" onclick="searchMarketplace()">
+                Search
+            </button>
+        </section>
 
-      <h3> What would you like to do? </h3>
+        <section class="welcome">
+            <h2>Give Your Electronics a Second Life</h2>
+            <p>
+                Find compatible replacement parts or give
+                your unwanted electronics a new purpose.
+            </p>
+        </section>
 
-      <button> Sell a Device </button>
+        <section class="quick-actions">
+            <button type="button" onclick="showPage('sell-page')">
+                📱 Sell a Device
+            </button>
 
-    <button> Find Replacement Parts </button>
-  </main>  
-<script src="script.j"></script>
+            <button type="button" onclick="showPage('explore-page')">
+                🔧 Find Parts
+            </button>
+        </section>
+
+        <section class="categories">
+            <h2>Browse Categories</h2>
+
+            <div class="category-grid">
+                <button type="button" onclick="filterCategory('Phones')">📱 Phones</button>
+                <button type="button" onclick="filterCategory('Laptops')">💻 Laptops</button>
+                <button type="button" onclick="filterCategory('Tablets')">📟 Tablets</button>
+                <button type="button" onclick="filterCategory('Gaming')">🎮 Gaming</button>
+            </div>
+        </section>
+
+        <section class="featured">
+            <h2>Featured Listings</h2>
+
+            <div class="listing-grid" id="featured-listings">
+                <article class="listing-card">
+                    <div class="product-image">📱</div>
+                    <h3>iPhone 12 Screen</h3>
+                    <p>Condition: Good</p>
+                    <span class="status">Evidence Submitted</span>
+                    <strong>$59</strong>
+                </article>
+
+                <article class="listing-card">
+                    <div class="product-image">🔋</div>
+                    <h3>iPhone 12 Battery</h3>
+                    <p>Condition: Used</p>
+                    <span class="status">Self Reported</span>
+                    <strong>$32</strong>
+                </article>
+
+                <article class="listing-card">
+                    <div class="product-image">📷</div>
+                    <h3>Phone Camera Module</h3>
+                    <p>Condition: Good</p>
+                    <span class="status">Evidence Submitted</span>
+                    <strong>$45</strong>
+                </article>
+            </div>
+        </section>
+
+        <section class="mission">
+            <h2>Why Choose JUNGLE?</h2>
+            <p>
+                Reduce electronic waste, save money,
+                and help useful technology find a second life.
+            </p>
+        </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+        <button type="button" onclick="showPage('home-page')">⌂ Home</button>
+        <button type="button" onclick="showPage('explore-page')">⌕ Explore</button>
+        <button type="button" onclick="showPage('sell-page')">＋ Sell</button>
+        <button type="button" onclick="showPage('listings-page')">▤ My Listings</button>
+        <button type="button" onclick="showPage('profile-page')">♙ Profile</button>
+    </nav>
+
+    <script src="script.js"></script>
 </body>
 </html>
