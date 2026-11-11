@@ -1,59 +1,338 @@
-body{
-  font-family: Arial, sans-serif;
-  background: #f4f8f4;
-  color: #173d29;
-  margin: 0;
-  text-align: center;
+
+/* JUNGLE MARKETPLACE */
+
+* {
+    box-sizing: border-box;
 }
 
-header{
-  backgroung: #174d32;
-  color: egg white;
-  padding: 20px;   
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f8f4;
+    color: #173d29;
+    margin: 0;
+    padding-bottom: 85px;
 }
 
-main{
-  max-width: 800px;
-  margin 40px auto;
-  padding: 20px;
+/* HEADER */
+
+.app-header {
+    background: #174d32;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
-.options {
-  display; flex;
-  justify-content; center;
-  gap: 15px;
-  flex-wrap: wrap;
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
+.brand h1 {
+    font-size: 30px;
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.logo-placeholder {
+    font-size: 30px;
+}
+
+.app-header p {
+    margin: 8px 0 0;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+/* MAIN CONTENT */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 32px;
+}
+
+h2 {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+/* SEARCH BAR */
+
+.search-section {
+    display: flex;
+    gap: 10px;
+    background: white;
+    padding: 12px;
+    border-radius: 14px;
+    box-shadow: 0 2px 10px #00000010;
+}
+
+.search-section input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #d6e2d9;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+/* BUTTONS */
+
 button {
-  beckground: #237a4b;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
+    background: #237a4b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
 }
 
-button: hover {
-  background: #145c36;
+button:hover {
+    background: #145c36;
+    transform: translateY(-2px);
 }
 
-.page{ 
-  background: white;
-  margin-top: 30px;
-  padding:25px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px #00000012;
+button:focus-visible {
+    outline: 3px solid #e3b84d;
+    outline-offset: 3px;
 }
 
-.hidden{
-  display:none;
+/* WELCOME */
+
+.welcome {
+    text-align: center;
+    padding: 24px 12px;
 }
 
-label{
-display: block;
-  margin-top: 18px;
+.welcome h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
-select, input 
-display; block;
-margin: 10px auto 20px;
-padding: 10px;
-max-width: 100%
+.welcome p {
+    color: #557263;
+    line-height: 1.6;
+}
+
+/* QUICK ACTIONS */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.quick-actions button {
+    padding: 24px 12px;
+    font-size: 17px;
+    border-radius: 15px;
+}
+
+.quick-actions button:first-child {
+    background: #174d32;
+}
+
+/* CATEGORIES */
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.category-grid button {
+    background: white;
+    color: #174d32;
+    border: 1px solid #dce8df;
+    padding: 20px 10px;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #00000008;
+}
+
+.category-grid button:hover {
+    background: #e2f1e7;
+}
+
+/* FEATURED LISTINGS */
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.listing-card {
+    background: white;
+    border: 1px solid #e1ebe4;
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 3px 12px #0000000b;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-image {
+    background: #eaf3ed;
+    height: 150px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 65px;
+}
+
+.listing-card h3 {
+    margin: 6px 0 0;
+    font-size: 17px;
+}
+
+.listing-card p {
+    margin: 0;
+    color: #6a7d70;
+    font-size: 14px;
+}
+
+.listing-card strong {
+    font-size: 22px;
+    color: #174d32;
+    margin-top: auto;
+}
+
+.status {
+    display: inline-block;
+    align-self: flex-start;
+    background: #e5f1e8;
+    color: #25633e;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* MISSION */
+
+.mission {
+    background: #e3f0e7;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.mission p {
+    line-height: 1.6;
+}
+
+/* BOTTOM NAVIGATION */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 4px;
+    background: white;
+    border-top: 1px solid #dce8df;
+    padding: 10px;
+    z-index: 100;
+}
+
+.bottom-nav button {
+    background: transparent;
+    color: #557263;
+    font-size: 12px;
+    padding: 10px 6px;
+}
+
+.bottom-nav button:hover {
+    background: #e5f1e8;
+    color: #174d32;
+}
+
+/* FUTURE APP SCREENS */
+
+.page {
+    background: white;
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #00000012;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+}
+
+select,
+input,
+textarea {
+    max-width: 100%;
+}
+
+/* MOBILE LAYOUT */
+
+@media (max-width: 600px) {
+    main {
+        padding: 14px;
+    }
+
+    .welcome h2 {
+        font-size: 24px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .listing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-image {
+        height: 115px;
+        font-size: 48px;
+    }
+
+    .quick-actions {
+        gap: 10px;
+    }
+
+    .quick-actions button {
+        font-size: 14px;
+        padding: 18px 8px;
+    }
+
+    .search-section {
+        flex-wrap: wrap;
+    }
+
+    .search-section input {
+        flex-basis: 100%;
+    }
+
+    .search-section button {
+        width: 100%;
+    }
+
+    .bottom-nav button {
+        font-size: 10px;
+        padding: 8px 3px;
+    }
+}
