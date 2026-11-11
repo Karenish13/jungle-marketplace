@@ -16,33 +16,32 @@ body {
 /* HEADER */
 
 .app-header {
-    background: #174d32;
-    color: white;
-    padding: 20px;
+    background: linear-gradient(135deg, #102e20, #1c5b3b);
+    color: #ffffff;
+    padding: 28px 20px;
     text-align: center;
-}
-
-.brand {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+    border-bottom: 4px solid #c8a85b;
 }
 
 .brand h1 {
-    font-size: 30px;
+    color: #f0d58a;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 3px;
     margin: 0;
-    letter-spacing: 2px;
 }
 
 .logo-placeholder {
-    font-size: 30px;
+    color: #f0d58a;
+    font-size: 34px;
 }
 
 .app-header p {
-    margin: 8px 0 0;
-    font-size: 13px;
-    letter-spacing: 1px;
+    color: #c4e3cb;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 10px;
 }
 
 /* MAIN CONTENT */
