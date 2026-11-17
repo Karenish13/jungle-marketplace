@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,92 +18,106 @@
     </header>
 
     <main>
-        <section class="search-section">
-            <input
-                type="search"
-                id="marketplace-search"
-                placeholder="Search devices, parts, or models..."
-                aria-label="Search marketplace"
-            >
-            <button type="button" onclick="searchMarketplace()">
-                Search
-            </button>
-        </section>
+        <!-- HOME PAGE -->
+        <div id="home-page">
 
-        <section class="welcome">
-            <h2>Give Your Electronics a Second Life</h2>
-            <p>
-                Find compatible replacement parts or give
-                your unwanted electronics a new purpose.
-            </p>
-        </section>
+            <section class="search-section">
+                <input
+                    type="search"
+                    id="marketplace-search"
+                    placeholder="Search phones, tablets, or parts..."
+                    aria-label="Search marketplace"
+                >
+                <button type="button" onclick="searchMarketplace()">
+                    Search
+                </button>
+            </section>
 
-        <section class="quick-actions">
-            <button type="button" onclick="showPage('sell-page')">
-                📱 Sell a Device
-            </button>
+            <section class="welcome">
+                <h2>Give Your Electronics a Second Life</h2>
+                <p>
+                    Find replacement parts for phones and tablets
+                    or give your unwanted devices a new purpose.
+                </p>
+            </section>
 
-            <button type="button" onclick="showPage('explore-page')">
-                🔧 Find Parts
-            </button>
-        </section>
+            <section class="quick-actions">
+                <button type="button" onclick="showPage('sell-page')">
+                    📱 Sell a Device
+                </button>
 
-        <section class="categories">
-            <h2>Browse Categories</h2>
+                <button type="button" onclick="showPage('explore-page')">
+                    🔧 Find Parts
+                </button>
+            </section>
 
-            <div class="category-grid">
-                <button type="button" onclick="filterCategory('Phones')">📱 Phones</button>
-                <button type="button" onclick="filterCategory('Laptops')">💻 Laptops</button>
-                <button type="button" onclick="filterCategory('Tablets')">📟 Tablets</button>
-                <button type="button" onclick="filterCategory('Gaming')">🎮 Gaming</button>
+            <section class="categories">
+                <h2>Browse Categories</h2>
+
+                <div class="category-grid">
+                    <button type="button" onclick="filterCategory('Phones')">
+                        📱 Phones
+                    </button>
+                    <button type="button" onclick="filterCategory('Tablets')">
+                        📟 Tablets
+                    </button>
+                </div>
+            </section>
+
+            <section class="featured">
+                <h2>Marketplace</h2>
+                <div class="marketplace-preview">
+                    <span class="preview-icon">♻️</span>
+                    <h3>Something Great Is Growing</h3>
+                    <p>
+                        Our phone and tablet marketplace is
+                        currently under development.
+                    </p>
+                    <span class="status">Coming Soon</span>
+                </div>
+            </section>
+
+            <section class="mission">
+                <h2>Why Choose JUNGLE?</h2>
+                <p>
+                    Reduce electronic waste, save money,
+                    and help useful technology find a second life.
+                </p>
+            </section>
+        </div>
+
+        <!-- PLACEHOLDER PAGE -->
+        <section id="coming-soon-page" class="page" hidden>
+            <div class="coming-soon-content">
+                <span class="coming-soon-icon">🌱</span>
+                <h2 id="coming-soon-title">Coming Soon!</h2>
+                <p id="coming-soon-message">
+                    We're still growing this part of JUNGLE.
+                </p>
+
+                <button type="button" onclick="showPage('home-page')">
+                    Back to Home
+                </button>
             </div>
-        </section>
-
-        <section class="featured">
-            <h2>Featured Listings</h2>
-
-            <div class="listing-grid" id="featured-listings">
-                <article class="listing-card">
-                    <div class="product-image">📱</div>
-                    <h3>iPhone 12 Screen</h3>
-                    <p>Condition: Good</p>
-                    <span class="status">Evidence Submitted</span>
-                    <strong>$59</strong>
-                </article>
-
-                <article class="listing-card">
-                    <div class="product-image">🔋</div>
-                    <h3>iPhone 12 Battery</h3>
-                    <p>Condition: Used</p>
-                    <span class="status">Self Reported</span>
-                    <strong>$32</strong>
-                </article>
-
-                <article class="listing-card">
-                    <div class="product-image">📷</div>
-                    <h3>Phone Camera Module</h3>
-                    <p>Condition: Good</p>
-                    <span class="status">Evidence Submitted</span>
-                    <strong>$45</strong>
-                </article>
-            </div>
-        </section>
-
-        <section class="mission">
-            <h2>Why Choose JUNGLE?</h2>
-            <p>
-                Reduce electronic waste, save money,
-                and help useful technology find a second life.
-            </p>
         </section>
     </main>
 
     <nav class="bottom-nav" aria-label="Main navigation">
-        <button type="button" onclick="showPage('home-page')">⌂ Home</button>
-        <button type="button" onclick="showPage('explore-page')">⌕ Explore</button>
-        <button type="button" onclick="showPage('sell-page')">＋ Sell</button>
-        <button type="button" onclick="showPage('listings-page')">▤ My Listings</button>
-        <button type="button" onclick="showPage('profile-page')">♙ Profile</button>
+        <button type="button" onclick="showPage('home-page')">
+            ⌂ Home
+        </button>
+        <button type="button" onclick="showPage('explore-page')">
+            ⌕ Explore
+        </button>
+        <button type="button" onclick="showPage('sell-page')">
+            ＋ Sell
+        </button>
+        <button type="button" onclick="showPage('listings-page')">
+            ▤ My Listings
+        </button>
+        <button type="button" onclick="showPage('profile-page')">
+            ♙ Profile
+        </button>
     </nav>
 
     <script src="script.js"></script>
