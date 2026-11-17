@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #f4f8f4;
@@ -17,7 +21,7 @@ body {
 
 .app-header {
     background: linear-gradient(135deg, #102e20, #1c5b3b);
-    color: #ffffff;
+    color: white;
     padding: 28px 20px;
     text-align: center;
     border-bottom: 4px solid #c8a85b;
@@ -144,7 +148,7 @@ button:focus-visible {
 
 .category-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
@@ -161,60 +165,39 @@ button:focus-visible {
     background: #e2f1e7;
 }
 
-/* FEATURED LISTINGS */
+/* MARKETPLACE PREVIEW */
 
-.listing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-}
-
-.listing-card {
+.marketplace-preview {
     background: white;
     border: 1px solid #e1ebe4;
     border-radius: 16px;
-    padding: 14px;
+    padding: 38px 20px;
+    text-align: center;
     box-shadow: 0 3px 12px #0000000b;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 }
 
-.product-image {
-    background: #eaf3ed;
-    height: 150px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 65px;
+.preview-icon {
+    font-size: 55px;
 }
 
-.listing-card h3 {
-    margin: 6px 0 0;
-    font-size: 17px;
-}
-
-.listing-card p {
-    margin: 0;
-    color: #6a7d70;
-    font-size: 14px;
-}
-
-.listing-card strong {
-    font-size: 22px;
+.marketplace-preview h3 {
     color: #174d32;
-    margin-top: auto;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.marketplace-preview p {
+    color: #557263;
+    line-height: 1.6;
 }
 
 .status {
     display: inline-block;
-    align-self: flex-start;
     background: #e5f1e8;
     color: #25633e;
-    padding: 6px 10px;
+    padding: 8px 14px;
     border-radius: 20px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
 }
 
@@ -229,6 +212,37 @@ button:focus-visible {
 
 .mission p {
     line-height: 1.6;
+}
+
+/* COMING SOON PAGE */
+
+.page {
+    background: white;
+    margin-top: 30px;
+    padding: 40px 25px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px #00000012;
+}
+
+.coming-soon-content {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.coming-soon-icon {
+    font-size: 65px;
+}
+
+.coming-soon-content h2 {
+    color: #174d32;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.coming-soon-content p {
+    color: #557263;
+    line-height: 1.7;
+    margin-bottom: 25px;
 }
 
 /* BOTTOM NAVIGATION */
@@ -259,31 +273,6 @@ button:focus-visible {
     color: #174d32;
 }
 
-/* FUTURE APP SCREENS */
-
-.page {
-    background: white;
-    margin-top: 30px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px #00000012;
-}
-
-.hidden {
-    display: none;
-}
-
-label {
-    display: block;
-    margin-top: 18px;
-}
-
-select,
-input,
-textarea {
-    max-width: 100%;
-}
-
 /* MOBILE LAYOUT */
 
 @media (max-width: 600px) {
@@ -295,20 +284,6 @@ textarea {
         font-size: 24px;
     }
 
-    .category-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .listing-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .product-image {
-        height: 115px;
-        font-size: 48px;
-    }
-
     .quick-actions {
         gap: 10px;
     }
@@ -316,6 +291,15 @@ textarea {
     .quick-actions button {
         font-size: 14px;
         padding: 18px 8px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-grid button {
+        padding: 16px 8px;
+        font-size: 14px;
     }
 
     .search-section {
@@ -334,4 +318,13 @@ textarea {
         font-size: 10px;
         padding: 8px 3px;
     }
+
+    .page {
+        padding: 25px 15px;
+    }
+
+    .coming-soon-content h2 {
+        font-size: 25px;
+    }
 }
+
