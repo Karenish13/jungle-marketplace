@@ -1,149 +1,129 @@
-const products = [
-    {
-        name: "iPhone 12 Screen",
-        category: "Phones",
-        price: 59,
-        condition: "Good",
-        status: "Evidence Submitted",
-        icon: "📱"
+
+/* JUNGLE MARKETPLACE */
+
+/*
+Current prototype:
+Home page is functional.
+Seller and buyer features are under development.
+JUNGLE focuses on phones and tablets.
+*/
+
+// Titles and descriptions for future pages
+const pages = {
+    "sell-page": {
+        title: "Sell a Device",
+        message:
+            "Coming Soon! We're developing a device assessment " +
+            "to help you estimate the value of your phone or tablet."
     },
-    {
-        name: "iPhone 12 Battery",
-        category: "Phones",
-        price: 32,
-        condition: "Used",
-        status: "Self Reported",
-        icon: "🔋"
+
+    "explore-page": {
+        title: "Find Parts",
+        message:
+            "Coming Soon! You'll be able to explore replacement " +
+            "parts for phones and tablets."
     },
-    {
-        name: "Phone Camera Module",
-        category: "Phones",
-        price: 45,
-        condition: "Good",
-        status: "Evidence Submitted",
-        icon: "📷"
+
+    "listings-page": {
+        title: "My Listings",
+        message:
+            "Coming Soon! You'll be able to view and manage " +
+            "your device listings here."
     },
-    {
-        name: "MacBook Keyboard",
-        category: "Laptops",
-        price: 38,
-        condition: "Good",
-        status: "Self Reported",
-        icon: "💻"
+
+    "profile-page": {
+        title: "Profile",
+        message:
+            "Coming Soon! Account and profile features " +
+            "are still under development."
     },
-    {
-        name: "iPad Charging Port",
-        category: "Tablets",
-        price: 25,
-        condition: "Used",
-        status: "Evidence Submitted",
-        icon: "📟"
+
+    "search-page": {
+        title: "Marketplace Search",
+        message:
+            "Coming Soon! Marketplace search will help " +
+            "you find phones, tablets, and replacement parts."
     },
-    {
-        name: "Nintendo Switch Joy-Con",
-        category: "Gaming",
-        price: 29,
-        condition: "Good",
-        status: "Self Reported",
-        icon: "🎮"
+
+    "phones-page": {
+        title: "Phones",
+        message:
+            "Coming Soon! Browse phone devices and " +
+            "replacement parts here."
+    },
+
+    "tablets-page": {
+        title: "Tablets",
+        message:
+            "Coming Soon! Browse tablet devices and " +
+            "replacement parts here."
     }
-];
+};
 
-// Display products on the homepage
-function displayProducts(items) {
-    const container =
-        document.getElementById("featured-listings");
+// Navigate between screens
+function showPage(pageId) {
+    const homePage =
+        document.getElementById("home-page");
 
-    if (!container) return;
+    const comingSoonPage =
+        document.getElementById("coming-soon-page");
 
-    container.innerHTML = "";
+    // Return to homepage
+    if (pageId === "home-page") {
+        homePage.hidden = false;
+        comingSoonPage.hidden = true;
 
-    if (items.length === 0) {
-        container.textContent =
-            "No matching products found.";
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
         return;
     }
 
-    items.forEach(product => {
-        const card = document.createElement("article");
-        card.className = "listing-card";
+    // Find the selected placeholder
+    const selectedPage = pages[pageId];
 
-        card.innerHTML = `
-            <div class="product-image">
-                ${product.icon}
-            </div>
-            <h3>${product.name}</h3>
-            <p>Condition: ${product.condition}</p>
-            <span class="status">
-                ${product.status}
-            </span>
-            <strong>$${product.price}</strong>
-        `;
+    if (!selectedPage) {
+        showPage("home-page");
+        return;
+    }
 
-        container.appendChild(card);
+    // Update placeholder content
+    document.getElementById(
+        "coming-soon-title"
+    ).textContent = selectedPage.title;
+
+    document.getElementById(
+        "coming-soon-message"
+    ).textContent = selectedPage.message;
+
+    // Hide homepage and show placeholder
+    homePage.hidden = true;
+    comingSoonPage.hidden = false;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 }
 
-// Search marketplace listings
+// Search placeholder
 function searchMarketplace() {
-    const searchInput =
-        document.getElementById("marketplace-search");
-
-    const searchTerm =
-        searchInput.value.toLowerCase().trim();
-
-    const matches = products.filter(product =>
-        product.name.toLowerCase().includes(searchTerm) ||
-        product.category.toLowerCase().includes(searchTerm)
-    );
-
-    displayProducts(matches);
-
-    document.querySelector(".featured")
-        ?.scrollIntoView({ behavior: "smooth" });
+    showPage("search-page");
 }
 
-// Browse product categories
+// Category placeholders
 function filterCategory(category) {
-    const matches = products.filter(product =>
-        product.category === category
-    );
-
-    displayProducts(matches);
-
-    document.querySelector(".featured")
-        ?.scrollIntoView({ behavior: "smooth" });
-}
-
-// Navigate between prototype screens
-function showPage(pageId) {
-    const pageNames = {
-        "home-page": "Home",
-        "explore-page": "Explore Parts",
-        "sell-page": "Sell a Device",
-        "listings-page": "My Listings",
-        "profile-page": "Profile"
-    };
-
-    if (pageId === "home-page") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        return;
+    if (category === "Phones") {
+        showPage("phones-page");
+    } else if (category === "Tablets") {
+        showPage("tablets-page");
     }
-
-    const pageName = pageNames[pageId];
-
-    if (!pageName) return;
-
-    alert(
-        `${pageName} is the next JUNGLE screen ` +
-        "we will build!"
-    );
 }
 
-// Initialize the marketplace
+// Allow Enter key to trigger search
 document.addEventListener("DOMContentLoaded", () => {
-    displayProducts(products);
-
     const searchInput =
         document.getElementById("marketplace-search");
 
@@ -154,4 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+    // Always begin on the homepage
+    showPage("home-page");
 });
