@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/DiagnosticsCore/Package.resolved
+
+# Per-developer signing (see Config/Signing.local.xcconfig.example)
+Config/Signing.local.xcconfig

@@ -1,0 +1,16 @@
+// Shared build settings for the Jungle app target.
+//
+// Do not put your Apple team or bundle ID in this file or in Xcode's Signing tab.
+// Copy Signing.local.xcconfig.example to Signing.local.xcconfig (ignored by git) and edit that,
+// so each developer can sign with their own free personal team.
+
+PRODUCT_BUNDLE_IDENTIFIER = edu.engr.jungle.change-me
+DEVELOPMENT_TEAM =
+
+// Minimum iOS version. The app supports iOS 14, but Xcode 16 and newer
+// cannot build below 15.0, so 15.0 is the shared default. On the legacy Mac (Xcode 15), set
+// this to 14.0 in Signing.local.xcconfig. Run Scripts/check-ios14.sh to check iOS 14
+// compatibility on any Mac.
+IPHONEOS_DEPLOYMENT_TARGET = 15.0
+
+#include? "Signing.local.xcconfig"
