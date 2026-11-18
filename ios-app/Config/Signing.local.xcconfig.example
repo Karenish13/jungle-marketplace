@@ -1,0 +1,13 @@
+// Copy this file to Config/Signing.local.xcconfig and fill in your own values.
+// That copy is ignored by git, so your team ID never ends up in the repo.
+
+// Your team ID: Xcode > Settings > Accounts > select your Apple ID > the "Personal Team" row.
+// Or pick your team once in the Signing tab, copy the ID it writes, then undo that change.
+DEVELOPMENT_TEAM = ABCDE12345
+
+// Must be unique to you: free personal teams cannot share a bundle ID.
+PRODUCT_BUNDLE_IDENTIFIER = edu.engr.jungle.yourname
+
+// Legacy Mac only (Xcode 15, for the iOS 14 phones): uncomment this line.
+// Leave it commented on Xcode 16 or newer, which cannot build below iOS 15.
+// IPHONEOS_DEPLOYMENT_TARGET = 14.0
