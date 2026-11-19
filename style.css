@@ -14,7 +14,7 @@ body {
     background: #f4f8f4;
     color: #173d29;
     margin: 0;
-    padding-bottom: 85px;
+    padding-bottom: 90px;
 }
 
 /* HEADER */
@@ -51,7 +51,7 @@ body {
 
 main {
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
     padding: 20px;
 }
 
@@ -69,12 +69,13 @@ h2 {
 button {
     background: #237a4b;
     color: white;
-    border: 0;
+    border: none;
     border-radius: 10px;
     padding: 13px 18px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
 button:hover {
@@ -85,7 +86,12 @@ button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
     outline: 3px solid #e3b84d;
-    outline-offset: 2px;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
 }
 
 /* SEARCH */
@@ -125,7 +131,7 @@ textarea:focus-visible {
     line-height: 1.6;
 }
 
-/* MAIN ACTION BUTTONS */
+/* MAIN ACTIONS */
 
 .quick-actions {
     display: grid;
@@ -171,6 +177,7 @@ textarea:focus-visible {
     border-radius: 16px;
     padding: 38px 20px;
     text-align: center;
+    box-shadow: 0 3px 12px #0000000b;
 }
 
 .preview-icon {
@@ -225,13 +232,12 @@ textarea:focus-visible {
     max-width: 750px;
 }
 
-.seller-panel > p,
-.page p {
+.seller-header p {
     color: #557263;
     line-height: 1.6;
 }
 
-/* COMING SOON PAGE */
+/* COMING SOON */
 
 .coming-soon-content {
     text-align: center;
@@ -244,6 +250,181 @@ textarea:focus-visible {
 
 .coming-soon-content h2 {
     font-size: 30px;
+}
+
+.coming-soon-content p {
+    color: #557263;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+/* SELLER PROGRESS */
+
+.question-progress {
+    font-weight: bold;
+    color: #557263;
+    margin-top: 28px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 10px;
+    background: #e5f1e8;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #237a4b;
+    transition: width 0.2s;
+}
+
+.question-title {
+    color: #174d32;
+    font-size: 23px;
+    margin: 26px 0 20px;
+}
+
+/* QUESTION OPTIONS */
+
+.seller-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.seller-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #f4f8f4;
+    border: 1px solid #dce8df;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.seller-option:hover {
+    background: #e9f5ed;
+}
+
+.seller-option:has(input:checked) {
+    background: #e2f1e7;
+    border-color: #237a4b;
+}
+
+.seller-option input {
+    accent-color: #237a4b;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.seller-option span {
+    line-height: 1.4;
+}
+
+/* CUSTOM MODEL AND REASON */
+
+.custom-model {
+    margin-top: 12px;
+}
+
+.custom-model label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.seller-text-input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d6e2d9;
+    border-radius: 10px;
+    font: inherit;
+}
+
+.seller-textarea {
+    width: 100%;
+    min-height: 110px;
+    padding: 13px;
+    border: 1px solid #d6e2d9;
+    border-radius: 10px;
+    font: inherit;
+    resize: vertical;
+}
+
+/* ERROR MESSAGE */
+
+.seller-error {
+    color: #b42318;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.seller-error:empty {
+    display: none;
+}
+
+/* NAVIGATION */
+
+.seller-navigation {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+}
+
+.seller-navigation button {
+    flex: 1;
+    min-width: 110px;
+}
+
+.seller-secondary {
+    background: #e5f1e8;
+    color: #174d32;
+}
+
+.seller-secondary:hover {
+    background: #d3e9d9;
+}
+
+/* ESTIMATE */
+
+.estimate-card {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.estimate-model {
+    color: #557263;
+    font-size: 18px;
+}
+
+.estimated-price {
+    color: #174d32;
+    font-size: 48px;
+    font-weight: 800;
+    margin: 20px 0;
+}
+
+.estimate-breakdown {
+    background: #f4f8f4;
+    border-radius: 12px;
+    padding: 18px;
+    text-align: left;
+    line-height: 1.8;
+}
+
+.seller-note {
+    background: #fff7df;
+    color: #70571b;
+    border-radius: 10px;
+    padding: 15px;
+    line-height: 1.6;
+    margin-top: 20px;
 }
 
 /* BOTTOM NAVIGATION */
@@ -274,130 +455,7 @@ textarea:focus-visible {
     color: #174d32;
 }
 
-/* SELLER QUESTIONNAIRE */
-
-.question-progress {
-    color: #557263;
-    font-weight: bold;
-}
-
-.progress-track {
-    width: 100%;
-    height: 10px;
-    background: #e5f1e8;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: #237a4b;
-}
-
-.seller-panel h3 {
-    color: #174d32;
-    margin-top: 24px;
-}
-
-/* QUESTION ANSWERS */
-
-.seller-options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 24px 0;
-}
-
-.seller-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 15px;
-    background: #f4f8f4;
-    border: 1px solid #dce8df;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.seller-option:has(input:checked) {
-    background: #e2f1e7;
-    border-color: #237a4b;
-}
-
-.seller-option input {
-    accent-color: #237a4b;
-    width: 18px;
-    height: 18px;
-}
-
-.seller-textarea {
-    width: 100%;
-    min-height: 46px;
-    padding: 12px;
-    border: 1px solid #d6e2d9;
-    border-radius: 10px;
-    font: inherit;
-}
-
-.seller-options textarea {
-    min-height: 100px;
-}
-
-/* QUESTION NAVIGATION */
-
-.seller-navigation {
-    display: flex;
-    gap: 12px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-}
-
-.seller-navigation button {
-    flex: 1;
-    min-width: 110px;
-}
-
-.seller-secondary {
-    background: #e5f1e8;
-    color: #174d32;
-}
-
-.seller-secondary:hover {
-    background: #d3e9d9;
-}
-
-.seller-navigation button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-.seller-error {
-    color: #b42318;
-    font-weight: bold;
-}
-
-.seller-error:empty {
-    display: none;
-}
-
-/* PRICE ESTIMATE */
-
-.estimated-price {
-    font-size: 44px;
-    font-weight: 800;
-    color: #174d32;
-    padding: 20px 0;
-}
-
-.seller-note {
-    background: #fff7df;
-    color: #70571b;
-    padding: 15px;
-    border-radius: 10px;
-    line-height: 1.6;
-}
-
-/* MOBILE LAYOUT */
+/* MOBILE AND TABLET */
 
 @media (max-width: 600px) {
     main {
@@ -434,17 +492,27 @@ textarea:focus-visible {
         width: 100%;
     }
 
-    .bottom-nav button {
-        font-size: 10px;
-        padding: 8px 3px;
-    }
-
     .page,
     .seller-panel {
         padding: 20px 16px;
     }
 
+    .question-title {
+        font-size: 20px;
+    }
+
     .seller-navigation {
         flex-direction: column;
     }
+
+    .bottom-nav button {
+        font-size: 10px;
+        padding: 8px 3px;
+    }
+
+    .estimated-price {
+        font-size: 40px;
+    }
 }
+
+
