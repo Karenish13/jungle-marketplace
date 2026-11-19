@@ -1,16 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>JUNGLE Marketplace</title>
-
-    <link rel="stylesheet" href="style.css?v=5">
-    <script src="script.js?v=5" defer></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <header class="app-header">
@@ -18,12 +13,10 @@
             <span class="logo-placeholder">🧭</span>
             <h1>JUNGLE ♻</h1>
         </div>
-
         <p>Repair • Reuse • Reduce</p>
     </header>
 
     <main>
-
         <!-- HOME PAGE -->
         <div id="home-page">
 
@@ -32,8 +25,8 @@
                     type="search"
                     id="marketplace-search"
                     placeholder="Search phones, tablets, or parts..."
+                    aria-label="Search marketplace"
                 >
-
                 <button type="button" onclick="searchMarketplace()">
                     Search
                 </button>
@@ -41,15 +34,14 @@
 
             <section class="welcome">
                 <h2>Give Your Electronics a Second Life</h2>
-
                 <p>
-                    Find replacement parts or give your
-                    unwanted devices a new purpose.
+                    Find replacement parts for phones and tablets
+                    or give your unwanted devices a new purpose.
                 </p>
             </section>
 
             <section class="quick-actions">
-                <button type="button" onclick="openSeller()">
+                <button type="button" onclick="showPage('sell-page')">
                     📱 Sell a Device
                 </button>
 
@@ -65,7 +57,6 @@
                     <button type="button" onclick="filterCategory('Phones')">
                         📱 Phones
                     </button>
-
                     <button type="button" onclick="filterCategory('Tablets')">
                         📟 Tablets
                     </button>
@@ -74,85 +65,69 @@
 
             <section class="featured">
                 <h2>Marketplace</h2>
-
                 <div class="marketplace-preview">
                     <span class="preview-icon">♻️</span>
-
                     <h3>Something Great Is Growing</h3>
-
                     <p>
-                        Our marketplace is currently under development.
+                        Our phone and tablet marketplace is
+                        currently under development.
                     </p>
+                    <span class="status">Coming Soon</span>
                 </div>
             </section>
 
             <section class="mission">
                 <h2>Why Choose JUNGLE?</h2>
-
                 <p>
                     Reduce electronic waste, save money,
                     and help useful technology find a second life.
                 </p>
             </section>
-
         </div>
 
-        <!-- SELLER QUESTIONNAIRE -->
-        <section id="seller-page" class="seller-panel" hidden>
-            <div class="seller-header">
-                <h2>Sell a Device</h2>
-
-                <p>
-                    Answer a few questions about your phone or tablet
-                    to receive an estimated device value.
-                </p>
-            </div>
-
-            <div id="seller-questionnaire"></div>
+        <!-- SELL A DEVICE: DIAGNOSTIC QUESTIONNAIRE -->
+        <section id="sell-page" class="page" hidden>
+            <!-- Filled in by script.js -->
+            <div id="diagnostic-root"></div>
         </section>
 
-        <!-- UNFINISHED BUYER FEATURES -->
+        <!-- PLACEHOLDER PAGE -->
         <section id="coming-soon-page" class="page" hidden>
             <div class="coming-soon-content">
                 <span class="coming-soon-icon">🌱</span>
-
-                <h2 id="coming-soon-title">Coming Soon</h2>
-                <p id="coming-soon-message"></p>
+                <h2 id="coming-soon-title">Coming Soon!</h2>
+                <p id="coming-soon-message">
+                    We're still growing this part of JUNGLE.
+                </p>
 
                 <button type="button" onclick="showPage('home-page')">
                     Back to Home
                 </button>
             </div>
         </section>
-
     </main>
 
     <nav class="bottom-nav" aria-label="Main navigation">
-
         <button type="button" onclick="showPage('home-page')">
             ⌂ Home
         </button>
-
         <button type="button" onclick="showPage('explore-page')">
             ⌕ Explore
         </button>
-
-        <button type="button" onclick="openSeller()">
+        <button type="button" onclick="showPage('sell-page')">
             ＋ Sell
         </button>
-
         <button type="button" onclick="showPage('listings-page')">
             ▤ My Listings
         </button>
-
         <button type="button" onclick="showPage('profile-page')">
             ♙ Profile
         </button>
-
     </nav>
 
+    <script src="script.js"></script>
 </body>
 </html>
 
-
+        
       
