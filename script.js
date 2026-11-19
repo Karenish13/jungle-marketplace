@@ -1,42 +1,49 @@
 
 /* JUNGLE MARKETPLACE */
-/* Seller questionnaire demonstration */
+/* SELL A DEVICE QUESTIONNAIRE */
 
-// Pages that are still under development
-const pages = {
-    "explore-page": [
-        "Find Parts",
-        "Coming Soon! Replacement parts browsing is under development."
-    ],
+// ========================================
+// COMING SOON PAGES
+// ========================================
 
-    "listings-page": [
-        "My Listings",
-        "Coming Soon! Listings are not available yet."
-    ],
+// Sell a Device is intentionally NOT here.
+const comingSoonPages = {
+    "explore-page": {
+        title: "Find Parts",
+        message: "Coming Soon! Browse replacement parts for phones and tablets."
+    },
 
-    "profile-page": [
-        "Profile",
-        "Coming Soon! Accounts are not available yet."
-    ],
+    "listings-page": {
+        title: "My Listings",
+        message: "Coming Soon! Manage your device listings here."
+    },
 
-    "search-page": [
-        "Marketplace Search",
-        "Coming Soon! Search is not available yet."
-    ],
+    "profile-page": {
+        title: "Profile",
+        message: "Coming Soon! Account features are under development."
+    },
 
-    "phones-page": [
-        "Phones",
-        "Coming Soon! Phone listings are not available yet."
-    ],
+    "search-page": {
+        title: "Marketplace Search",
+        message: "Coming Soon! Search for devices and replacement parts."
+    },
 
-    "tablets-page": [
-        "Tablets",
-        "Coming Soon! Tablet listings are not available yet."
-    ]
+    "phones-page": {
+        title: "Phones",
+        message: "Coming Soon! Browse phones and replacement parts."
+    },
+
+    "tablets-page": {
+        title: "Tablets",
+        message: "Coming Soon! Browse tablets and replacement parts."
+    }
 };
 
-// Available demonstration models
-const models = {
+// ========================================
+// DEVICE MODELS
+// ========================================
+
+const deviceModels = {
     Phone: [
         "iPhone 13",
         "iPhone 14",
@@ -54,23 +61,26 @@ const models = {
     ]
 };
 
+// ========================================
 // SELLER QUESTIONS
-const questions = [
+// ========================================
+
+const sellerQuestions = [
     {
         key: "type",
-        title: "What kind of device are you selling?",
+        question: "What kind of device are you selling?",
         options: ["Phone", "Tablet"]
     },
 
     {
         key: "model",
-        title: "What model is your device?",
-        options: () => models[answers.type] || []
+        question: "What model is your device?",
+        options: () => deviceModels[sellerAnswers.type] || []
     },
 
     {
         key: "storage",
-        title: "How much storage does it have?",
+        question: "How much storage does it have?",
         options: [
             "64 GB",
             "128 GB",
@@ -82,7 +92,7 @@ const questions = [
 
     {
         key: "exterior",
-        title: "What is the exterior condition?",
+        question: "What is the exterior condition?",
         options: [
             "Like new",
             "Minor scratches",
@@ -93,7 +103,7 @@ const questions = [
 
     {
         key: "screen",
-        title: "Does the screen work?",
+        question: "Does the screen work?",
         options: [
             "Works perfectly",
             "Cracked but works",
@@ -106,7 +116,7 @@ const questions = [
 
     {
         key: "battery",
-        title: "What is the battery health?",
+        question: "What is the battery health?",
         options: [
             "90% or higher",
             "80% to 89%",
@@ -118,7 +128,7 @@ const questions = [
 
     {
         key: "charging",
-        title: "Does the device charge normally?",
+        question: "Does the device charge normally?",
         options: [
             "Yes",
             "Slow or inconsistent",
@@ -129,7 +139,7 @@ const questions = [
 
     {
         key: "rearCamera",
-        title: "Does the rear camera work?",
+        question: "Does the rear camera work?",
         options: [
             "Works",
             "Has problems",
@@ -140,7 +150,7 @@ const questions = [
 
     {
         key: "frontCamera",
-        title: "Does the front camera work?",
+        question: "Does the front camera work?",
         options: [
             "Works",
             "Has problems",
@@ -151,7 +161,7 @@ const questions = [
 
     {
         key: "speakers",
-        title: "Do the speakers work?",
+        question: "Do the speakers work?",
         options: [
             "Clear sound",
             "Distorted or quiet",
@@ -162,7 +172,7 @@ const questions = [
 
     {
         key: "microphone",
-        title: "Does the microphone work?",
+        question: "Does the microphone work?",
         options: [
             "Works",
             "Muffled or distorted",
@@ -173,7 +183,7 @@ const questions = [
 
     {
         key: "wifi",
-        title: "Does Wi-Fi work?",
+        question: "Does Wi-Fi work?",
         options: [
             "Yes",
             "Unreliable",
@@ -184,7 +194,7 @@ const questions = [
 
     {
         key: "bluetooth",
-        title: "Does Bluetooth work?",
+        question: "Does Bluetooth work?",
         options: [
             "Yes",
             "Unreliable",
@@ -195,7 +205,7 @@ const questions = [
 
     {
         key: "cellular",
-        title: "Does cellular service work, if supported?",
+        question: "Does cellular service work, if supported?",
         options: [
             "Yes",
             "Some problems",
@@ -207,7 +217,7 @@ const questions = [
 
     {
         key: "water",
-        title: "Has it been exposed to water?",
+        question: "Has the device been exposed to water?",
         options: [
             "No",
             "Yes, but still works",
@@ -218,7 +228,7 @@ const questions = [
 
     {
         key: "repairs",
-        title: "Has it been repaired?",
+        question: "Has the device been repaired?",
         options: [
             "No",
             "Screen replacement",
@@ -230,7 +240,7 @@ const questions = [
 
     {
         key: "power",
-        title: "Does the device turn on?",
+        question: "Does the device turn on?",
         options: [
             "Fully functional",
             "Turns on with some issues",
@@ -241,7 +251,7 @@ const questions = [
 
     {
         key: "locks",
-        title: "Can you remove your accounts and activation locks?",
+        question: "Can you remove your accounts and activation locks?",
         options: [
             "Yes",
             "Need help",
@@ -252,7 +262,7 @@ const questions = [
 
     {
         key: "accessories",
-        title: "What accessories are included?",
+        question: "What accessories are included?",
         options: [
             "Original box and charger",
             "Charger only",
@@ -263,157 +273,215 @@ const questions = [
 
     {
         key: "reason",
-        title: "Why are you selling your device? (Optional)",
+        question: "Why are you selling your device?",
+        optional: true,
         text: true
     }
 ];
 
+// ========================================
 // QUESTIONNAIRE STATE
-let answers = {};
-let step = 0;
-let estimateVisible = false;
+// ========================================
 
-// Helper to create HTML elements safely
-const el = (tag, className, content) => {
-    const node = document.createElement(tag);
+let sellerAnswers = {};
+let currentQuestion = 0;
+let showingEstimate = false;
+
+// ========================================
+// HTML ELEMENT HELPER
+// ========================================
+
+function createElement(tag, className, text) {
+    const element = document.createElement(tag);
 
     if (className) {
-        node.className = className;
+        element.className = className;
     }
 
-    if (content !== undefined) {
-        node.textContent = content;
+    if (text !== undefined) {
+        element.textContent = text;
     }
 
-    return node;
-};
+    return element;
+}
 
-// PAGE NAVIGATION
-function showPage(pageId) {
-    const home = document.getElementById("home-page");
-    const seller = document.getElementById("seller-page");
-    const placeholder = document.getElementById("coming-soon-page");
+// ========================================
+// HIDE ALL PAGES
+// ========================================
 
-    // Hide all pages
-    home.hidden = true;
-    seller.hidden = true;
-    placeholder.hidden = true;
+function hideAllPages() {
+    document.getElementById("home-page").hidden = true;
+    document.getElementById("seller-page").hidden = true;
+    document.getElementById("coming-soon-page").hidden = true;
+}
 
-    // HOME
-    if (pageId === "home-page") {
-        home.hidden = false;
-    }
+// ========================================
+// OPEN SELLER QUESTIONNAIRE
+// ========================================
 
-    // SELL A DEVICE
-    else if (pageId === "sell-page") {
-        seller.hidden = false;
+function openSeller() {
+    hideAllPages();
 
-        if (estimateVisible) {
-            showPriceEstimate();
-        } else {
-            showSellerQuestion();
-        }
-    }
+    document.getElementById("seller-page").hidden = false;
 
-    // COMING SOON FEATURES
-    else {
-        const [title, message] = pages[pageId] || [
-            "Coming Soon",
-            "This feature is under development."
-        ];
-
-        document.getElementById(
-            "coming-soon-title"
-        ).textContent = title;
-
-        document.getElementById(
-            "coming-soon-message"
-        ).textContent = message;
-
-        placeholder.hidden = false;
+    if (showingEstimate) {
+        showPriceEstimate();
+    } else {
+        showSellerQuestion();
     }
 
     window.scrollTo(0, 0);
 }
 
-// SEARCH PLACEHOLDER
+// ========================================
+// PAGE NAVIGATION
+// ========================================
+
+function showPage(pageId) {
+
+    // Home page
+    if (pageId === "home-page") {
+        hideAllPages();
+
+        document.getElementById("home-page").hidden = false;
+
+        window.scrollTo(0, 0);
+        return;
+    }
+
+    // Always route Sell directly to questionnaire
+    if (pageId === "sell-page") {
+        openSeller();
+        return;
+    }
+
+    // Only buyer and unfinished pages
+    const page = comingSoonPages[pageId];
+
+    if (!page) {
+        showPage("home-page");
+        return;
+    }
+
+    hideAllPages();
+
+    document.getElementById(
+        "coming-soon-title"
+    ).textContent = page.title;
+
+    document.getElementById(
+        "coming-soon-message"
+    ).textContent = page.message;
+
+    document.getElementById(
+        "coming-soon-page"
+    ).hidden = false;
+
+    window.scrollTo(0, 0);
+}
+
+// ========================================
+// SEARCH AND CATEGORIES
+// ========================================
+
 function searchMarketplace() {
     showPage("search-page");
 }
 
-// CATEGORY PLACEHOLDERS
 function filterCategory(category) {
     if (category === "Phones") {
         showPage("phones-page");
-    } else {
+    } else if (category === "Tablets") {
         showPage("tablets-page");
     }
 }
 
-// DISPLAY QUESTIONNAIRE
+// ========================================
+// DISPLAY ONE QUESTION
+// ========================================
+
 function showSellerQuestion() {
-    estimateVisible = false;
+    showingEstimate = false;
 
-    const q = questions[step];
+    const question = sellerQuestions[currentQuestion];
 
-    const root = document.getElementById(
+    const container = document.getElementById(
         "seller-questionnaire"
     );
 
-    root.replaceChildren();
+    container.replaceChildren();
 
-    // Question number
-    root.append(
-        el(
-            "p",
-            "question-progress",
-            `Question ${step + 1} of ${questions.length}`
-        )
+    // Progress text
+    const progressText = createElement(
+        "p",
+        "question-progress",
+        `Question ${currentQuestion + 1} of ${sellerQuestions.length}`
     );
 
     // Progress bar
-    const track = el("div", "progress-track");
-    const fill = el("div", "progress-fill");
-
-    fill.style.width =
-        `${100 * (step + 1) / questions.length}%`;
-
-    track.append(fill);
-
-    root.append(
-        track,
-        el("h3", "", q.title)
+    const progressTrack = createElement(
+        "div",
+        "progress-track"
     );
 
-    // Answer options
-    const options = el("div", "seller-options");
+    const progressFill = createElement(
+        "div",
+        "progress-fill"
+    );
 
-    // Optional written response
-    if (q.text) {
-        const input = el(
+    progressFill.style.width =
+        `${((currentQuestion + 1) / sellerQuestions.length) * 100}%`;
+
+    progressTrack.appendChild(progressFill);
+
+    // Question title
+    const title = createElement(
+        "h3",
+        "question-title",
+        question.question
+    );
+
+    container.append(
+        progressText,
+        progressTrack,
+        title
+    );
+
+    // Answer container
+    const optionsContainer = createElement(
+        "div",
+        "seller-options"
+    );
+
+    // Optional written question
+    if (question.text) {
+        const textarea = createElement(
             "textarea",
             "seller-textarea"
         );
 
-        input.placeholder = "Tell us more (optional)";
-        input.value = answers[q.key] || "";
+        textarea.placeholder =
+            "Tell us more about your device (optional)";
 
-        input.addEventListener("input", () => {
-            answers[q.key] = input.value;
+        textarea.value =
+            sellerAnswers[question.key] || "";
+
+        textarea.addEventListener("input", () => {
+            sellerAnswers[question.key] = textarea.value;
         });
 
-        options.append(input);
+        optionsContainer.appendChild(textarea);
     }
 
     // Multiple choice questions
     else {
-        const choices =
-            typeof q.options === "function"
-                ? q.options()
-                : q.options;
+        const options =
+            typeof question.options === "function"
+                ? question.options()
+                : question.options;
 
-        choices.forEach(choice => {
-            const label = el(
+        options.forEach(option => {
+            const label = createElement(
                 "label",
                 "seller-option"
             );
@@ -422,141 +490,185 @@ function showSellerQuestion() {
 
             radio.type = "radio";
             radio.name = "seller-answer";
-            radio.value = choice;
+            radio.value = option;
 
             radio.checked =
-                answers[q.key] === choice;
+                sellerAnswers[question.key] === option;
 
             radio.addEventListener("change", () => {
 
-                // Reset model when device type changes
+                // Clear model if device type changes
                 if (
-                    q.key === "type" &&
-                    answers.type !== choice
+                    question.key === "type" &&
+                    sellerAnswers.type !== option
                 ) {
-                    delete answers.model;
-                    delete answers.customModel;
+                    delete sellerAnswers.model;
+                    delete sellerAnswers.customModel;
                 }
 
-                answers[q.key] = choice;
+                sellerAnswers[question.key] = option;
 
-                // Refresh model field when selected
-                if (q.key === "model") {
+                // Refresh custom model field
+                if (question.key === "model") {
+                    if (option !== "Other model") {
+                        delete sellerAnswers.customModel;
+                    }
+
                     showSellerQuestion();
                 }
             });
 
-            label.append(
-                radio,
-                el("span", "", choice)
+            const labelText = createElement(
+                "span",
+                "",
+                option
             );
 
-            options.append(label);
+            label.append(radio, labelText);
+            optionsContainer.appendChild(label);
         });
 
-        // Custom device model
+        // Custom model input
         if (
-            q.key === "model" &&
-            answers.model === "Other model"
+            question.key === "model" &&
+            sellerAnswers.model === "Other model"
         ) {
-            const input = el(
-                "input",
-                "seller-textarea"
+            const customContainer = createElement(
+                "div",
+                "custom-model"
             );
 
-            input.type = "text";
-            input.placeholder = "Enter the model name";
-            input.value = answers.customModel || "";
+            const customLabel = createElement(
+                "label",
+                "",
+                "Enter your device model"
+            );
 
-            input.addEventListener("input", () => {
-                answers.customModel = input.value;
+            const customInput = createElement(
+                "input",
+                "seller-text-input"
+            );
+
+            customInput.type = "text";
+            customInput.placeholder =
+                "Example: iPhone 12 Pro or iPad Air 5";
+
+            customInput.value =
+                sellerAnswers.customModel || "";
+
+            customInput.addEventListener("input", () => {
+                sellerAnswers.customModel = customInput.value;
             });
 
-            options.append(input);
+            customContainer.append(
+                customLabel,
+                customInput
+            );
+
+            optionsContainer.appendChild(customContainer);
         }
     }
 
-    root.append(options);
+    container.appendChild(optionsContainer);
 
-    // Validation message
-    const error = el("p", "seller-error");
-    error.setAttribute("role", "alert");
+    // Validation error
+    const errorMessage = createElement(
+        "p",
+        "seller-error"
+    );
 
-    root.append(error);
+    errorMessage.setAttribute("role", "alert");
+
+    container.appendChild(errorMessage);
 
     // Navigation buttons
-    const navigation = el(
+    const navigation = createElement(
         "div",
         "seller-navigation"
     );
 
-    // BACK BUTTON
-    const back = el(
+    // Back button
+    const backButton = createElement(
         "button",
         "seller-secondary",
         "Back"
     );
 
-    back.type = "button";
-    back.disabled = step === 0;
+    backButton.type = "button";
+    backButton.disabled = currentQuestion === 0;
 
-    back.addEventListener("click", () => {
-        step--;
-        showSellerQuestion();
-    });
-
-    // NEXT BUTTON
-    const next = el(
-        "button",
-        "",
-        step === questions.length - 1
-            ? "View Price Estimate"
-            : "Next"
-    );
-
-    next.type = "button";
-
-    next.addEventListener("click", () => {
-
-        // Require an answer except for optional text
-        if (!q.text && !answers[q.key]) {
-            error.textContent =
-                "Please select an answer.";
-            return;
-        }
-
-        // Require model name for Other model
-        if (
-            q.key === "model" &&
-            answers.model === "Other model" &&
-            !answers.customModel?.trim()
-        ) {
-            error.textContent =
-                "Please enter the model name.";
-            return;
-        }
-
-        // Final question
-        if (step === questions.length - 1) {
-            showPriceEstimate();
-        }
-
-        // Continue questionnaire
-        else {
-            step++;
+    backButton.addEventListener("click", () => {
+        if (currentQuestion > 0) {
+            currentQuestion--;
             showSellerQuestion();
         }
     });
 
-    navigation.append(back, next);
-    root.append(navigation);
+    // Next button
+    const nextButton = createElement(
+        "button",
+        "",
+        currentQuestion === sellerQuestions.length - 1
+            ? "View Price Estimate"
+            : "Next"
+    );
+
+    nextButton.type = "button";
+
+    nextButton.addEventListener("click", () => {
+
+        // Require answer for multiple choice
+        if (
+            !question.optional &&
+            !sellerAnswers[question.key]
+        ) {
+            errorMessage.textContent =
+                "Please select an answer before continuing.";
+            return;
+        }
+
+        // Require custom model name
+        if (
+            question.key === "model" &&
+            sellerAnswers.model === "Other model" &&
+            !sellerAnswers.customModel?.trim()
+        ) {
+            errorMessage.textContent =
+                "Please enter the model of your device.";
+            return;
+        }
+
+        // Final question
+        if (
+            currentQuestion ===
+            sellerQuestions.length - 1
+        ) {
+            showPriceEstimate();
+        }
+
+        // Next question
+        else {
+            currentQuestion++;
+            showSellerQuestion();
+        }
+    });
+
+    navigation.append(
+        backButton,
+        nextButton
+    );
+
+    container.appendChild(navigation);
 }
 
-// PRICE ESTIMATE CALCULATION
+// ========================================
+// PRICE ESTIMATE
+// ========================================
+
 function calculateEstimate() {
 
-    // Illustrative starting values
-    const bases = {
+    // Demonstration model values only
+    const basePrices = {
         "iPhone 13": 180,
         "iPhone 14": 240,
         "Samsung Galaxy S22": 175,
@@ -567,14 +679,14 @@ function calculateEstimate() {
         "Samsung Galaxy Tab S8": 200
     };
 
-    const base =
-        bases[answers.model] ||
-        (answers.type === "Tablet" ? 130 : 120);
+    const basePrice =
+        basePrices[sellerAnswers.model] ||
+        (sellerAnswers.type === "Tablet" ? 130 : 120);
 
-    let price = base;
+    let price = basePrice;
 
     // Condition adjustments
-    const penalties = {
+    const adjustments = {
 
         storage: {
             "64 GB": -15,
@@ -665,162 +777,202 @@ function calculateEstimate() {
         }
     };
 
-    // Apply adjustments
-    Object.entries(penalties).forEach(
+    // Apply each condition adjustment
+    Object.entries(adjustments).forEach(
         ([key, values]) => {
-            price += values[answers[key]] || 0;
+            price += values[sellerAnswers[key]] || 0;
         }
     );
 
-    // Accessories adjustment
+    // Accessories
     if (
-        answers.accessories ===
+        sellerAnswers.accessories ===
         "Original box and charger"
     ) {
         price += 10;
     }
 
-    // Demo-only estimate
+    // Demo minimum, not guaranteed resale value
     const estimate = Math.max(
         10,
         Math.round(price / 5) * 5
     );
 
     return {
-        base,
-        estimate
+        basePrice,
+        estimate,
+        adjustmentTotal: estimate - basePrice
     };
 }
 
-// DISPLAY FINAL PRICE ESTIMATE
-function showPriceEstimate() {
-    estimateVisible = true;
+// ========================================
+// DISPLAY PRICE ESTIMATE
+// ========================================
 
-    const root = document.getElementById(
+function showPriceEstimate() {
+    showingEstimate = true;
+
+    const container = document.getElementById(
         "seller-questionnaire"
     );
 
-    root.replaceChildren();
+    container.replaceChildren();
 
-    const { base, estimate } = calculateEstimate();
+    const result = calculateEstimate();
 
-    // Title
-    root.append(
-        el(
-            "h3",
-            "",
-            "Your Estimated Device Value"
-        )
-    );
-
-    // Model name
     const modelName =
-        answers.model === "Other model"
-            ? answers.customModel
-            : answers.model;
+        sellerAnswers.model === "Other model"
+            ? sellerAnswers.customModel
+            : sellerAnswers.model;
 
-    root.append(
-        el("p", "", modelName)
+    const card = createElement(
+        "div",
+        "estimate-card"
     );
 
-    // Price
-    root.append(
-        el(
-            "div",
-            "estimated-price",
-            `$${estimate}`
-        )
+    const heading = createElement(
+        "h3",
+        "question-title",
+        "Your Estimated Device Value"
     );
 
-    // Explanation
-    root.append(
-        el(
-            "p",
-            "",
-            `Illustrative model starting value: $${base}. ` +
-            "Condition and storage adjustments are " +
-            "reflected in the estimate."
-        )
+    const model = createElement(
+        "p",
+        "estimate-model",
+        modelName
     );
 
-    // Important note
-    root.append(
-        el(
-            "p",
-            "seller-note",
-            "This is a demonstration estimate, not a " +
-            "verified diagnostic result, live appraisal, " +
-            "guaranteed sale price, or approved listing. " +
-            "Damaged devices may still be useful for parts. " +
-            "Account locks must be addressed before any future sale."
-        )
+    const price = createElement(
+        "div",
+        "estimated-price",
+        `$${result.estimate}`
     );
 
-    // Navigation
-    const navigation = el(
+    const breakdown = createElement(
+        "div",
+        "estimate-breakdown"
+    );
+
+    const startingValue = createElement(
+        "p",
+        "",
+        `Illustrative starting value: $${result.basePrice}`
+    );
+
+    const adjustment = createElement(
+        "p",
+        "",
+        `Condition and storage adjustments: ` +
+        `${result.adjustmentTotal < 0 ? "-" : "+"}` +
+        `$${Math.abs(result.adjustmentTotal)}`
+    );
+
+    const finalValue = createElement(
+        "p",
+        "",
+        `Estimated value: $${result.estimate}`
+    );
+
+    breakdown.append(
+        startingValue,
+        adjustment,
+        finalValue
+    );
+
+    const note = createElement(
+        "p",
+        "seller-note",
+        "This is a demonstration estimate based on " +
+        "seller-reported answers, not a live appraisal " +
+        "or verified diagnostic report. Damaged devices " +
+        "may still contain reusable parts. Account locks " +
+        "must be resolved before a future sale."
+    );
+
+    card.append(
+        heading,
+        model,
+        price,
+        breakdown,
+        note
+    );
+
+    container.appendChild(card);
+
+    // Buttons
+    const navigation = createElement(
         "div",
         "seller-navigation"
     );
 
     // Review answers
-    const review = el(
+    const reviewButton = createElement(
         "button",
         "seller-secondary",
         "Review Answers"
     );
 
-    review.addEventListener("click", () => {
-        step = questions.length - 1;
+    reviewButton.type = "button";
+
+    reviewButton.addEventListener("click", () => {
+        currentQuestion = sellerQuestions.length - 1;
         showSellerQuestion();
     });
 
     // Start over
-    const restart = el(
+    const restartButton = createElement(
         "button",
         "",
         "Start Over"
     );
 
-    restart.addEventListener("click", () => {
-        answers = {};
-        step = 0;
+    restartButton.type = "button";
+
+    restartButton.addEventListener("click", () => {
+        sellerAnswers = {};
+        currentQuestion = 0;
         showSellerQuestion();
     });
 
-    // Back to home
-    const home = el(
+    // Home
+    const homeButton = createElement(
         "button",
         "seller-secondary",
         "Back to Home"
     );
 
-    home.addEventListener("click", () => {
+    homeButton.type = "button";
+
+    homeButton.addEventListener("click", () => {
         showPage("home-page");
     });
 
     navigation.append(
-        review,
-        restart,
-        home
+        reviewButton,
+        restartButton,
+        homeButton
     );
 
-    root.append(navigation);
+    container.appendChild(navigation);
 }
 
+// ========================================
 // INITIALIZE WEBSITE
+// ========================================
+
 document.addEventListener("DOMContentLoaded", () => {
 
-    const search = document.getElementById(
+    const searchInput = document.getElementById(
         "marketplace-search"
     );
 
-    // Enter key opens search placeholder
-    search?.addEventListener("keydown", event => {
-        if (event.key === "Enter") {
-            searchMarketplace();
-        }
-    });
+    if (searchInput) {
+        searchInput.addEventListener("keydown", event => {
+            if (event.key === "Enter") {
+                searchMarketplace();
+            }
+        });
+    }
 
-    // Begin on homepage
     showPage("home-page");
 });
