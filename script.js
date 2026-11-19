@@ -1,603 +1,475 @@
-
 /* JUNGLE MARKETPLACE */
 
-// Buyer features only
-const comingSoonPages = {
-    "explore-page": ["Find Parts", "Browse replacement parts for phones and tablets."],
-    "listings-page": ["My Listings", "Manage your device listings here."],
-    "profile-page": ["Profile", "Account features are under development."],
-    "search-page": ["Marketplace Search", "Search for devices and parts."],
-    "phones-page": ["Phones", "Browse phones and parts."],
-    "tablets-page": ["Tablets", "Browse tablets and parts."]
+/*
+Current prototype:
+Home page is functional.
+Seller and buyer features are under development.
+JUNGLE focuses on phones and tablets.
+*/
+
+// Titles and descriptions for future pages
+const pages = {
+    "explore-page": {
+        title: "Find Parts",
+        message:
+            "Coming Soon! You'll be able to explore replacement " +
+            "parts for phones and tablets."
+    },
+
+    "listings-page": {
+        title: "My Listings",
+        message:
+            "Coming Soon! You'll be able to view and manage " +
+            "your device listings here."
+    },
+
+    "profile-page": {
+        title: "Profile",
+        message:
+            "Coming Soon! Account and profile features " +
+            "are still under development."
+    },
+
+    "search-page": {
+        title: "Marketplace Search",
+        message:
+            "Coming Soon! Marketplace search will help " +
+            "you find phones, tablets, and replacement parts."
+    },
+
+    "phones-page": {
+        title: "Phones",
+        message:
+            "Coming Soon! Browse phone devices and " +
+            "replacement parts here."
+    },
+
+    "tablets-page": {
+        title: "Tablets",
+        message:
+            "Coming Soon! Browse tablet devices and " +
+            "replacement parts here."
+    }
 };
 
-const deviceModels = {
-    Phone: [
-        "iPhone 13",
-        "iPhone 14",
-        "Samsung Galaxy S22",
-        "Google Pixel 7",
-        "Other model"
-    ],
-    Tablet: [
-        "iPad 9th Generation",
-        "iPad 10th Generation",
-        "iPad Air",
-        "Samsung Galaxy Tab S8",
-        "Other model"
-    ]
-};
-
-const sellerQuestions = [
-    {
-        key: "type",
-        question: "What kind of device are you selling?",
-        options: ["Phone", "Tablet"]
-    },
-    {
-        key: "model",
-        question: "What model is your device?",
-        options: () => deviceModels[sellerAnswers.type] || []
-    },
-    {
-        key: "storage",
-        question: "How much storage does it have?",
-        options: ["64 GB", "128 GB", "256 GB", "512 GB or more", "Not sure"]
-    },
-    {
-        key: "exterior",
-        question: "What is the exterior condition?",
-        options: [
-            "Like new",
-            "Minor scratches",
-            "Cracked glass or noticeable damage",
-            "Bent or severely damaged"
-        ]
-    },
-    {
-        key: "screen",
-        question: "Does the screen work?",
-        options: [
-            "Works perfectly",
-            "Cracked but works",
-            "Display problems",
-            "Touchscreen problems",
-            "Does not work",
-            "Not tested"
-        ]
-    },
-    {
-        key: "battery",
-        question: "What is the battery health?",
-        options: [
-            "90% or higher",
-            "80% to 89%",
-            "Below 80%",
-            "Battery does not work",
-            "Unknown"
-        ]
-    },
-    {
-        key: "charging",
-        question: "Does the device charge normally?",
-        options: [
-            "Yes",
-            "Slow or inconsistent",
-            "Does not charge",
-            "Not tested"
-        ]
-    },
-    {
-        key: "rearCamera",
-        question: "Does the rear camera work?",
-        options: ["Works", "Has problems", "Does not work", "Not tested"]
-    },
-    {
-        key: "frontCamera",
-        question: "Does the front camera work?",
-        options: ["Works", "Has problems", "Does not work", "Not tested"]
-    },
-    {
-        key: "speakers",
-        question: "Do the speakers work?",
-        options: ["Clear sound", "Distorted or quiet", "No sound", "Not tested"]
-    },
-    {
-        key: "microphone",
-        question: "Does the microphone work?",
-        options: ["Works", "Muffled or distorted", "Does not work", "Not tested"]
-    },
-    {
-        key: "wifi",
-        question: "Does Wi-Fi work?",
-        options: ["Yes", "Unreliable", "No", "Not tested"]
-    },
-    {
-        key: "bluetooth",
-        question: "Does Bluetooth work?",
-        options: ["Yes", "Unreliable", "No", "Not tested"]
-    },
-    {
-        key: "cellular",
-        question: "Does cellular service work, if supported?",
-        options: [
-            "Yes",
-            "Some problems",
-            "No",
-            "Wi-Fi-only device / Not applicable",
-            "Not tested"
-        ]
-    },
-    {
-        key: "water",
-        question: "Has the device been exposed to water?",
-        options: [
-            "No",
-            "Yes, but still works",
-            "Yes, and has problems",
-            "Unsure"
-        ]
-    },
-    {
-        key: "repairs",
-        question: "Has the device been repaired?",
-        options: [
-            "No",
-            "Screen replacement",
-            "Battery replacement",
-            "Other repair",
-            "Unsure"
-        ]
-    },
-    {
-        key: "power",
-        question: "Does the device turn on?",
-        options: [
-            "Fully functional",
-            "Turns on with some issues",
-            "Does not turn on",
-            "Turns on but cannot be used normally"
-        ]
-    },
-    {
-        key: "locks",
-        question: "Can you remove your accounts and activation locks?",
-        options: ["Yes", "Need help", "Unsure", "No"]
-    },
-    {
-        key: "accessories",
-        question: "What accessories are included?",
-        options: [
-            "Original box and charger",
-            "Charger only",
-            "Device only",
-            "Other accessories"
-        ]
-    },
-    {
-        key: "reason",
-        question: "Why are you selling your device?",
-        optional: true,
-        text: true
-    }
-];
-
-let sellerAnswers = {};
-let currentQuestion = 0;
-let showingEstimate = false;
-
-// Navigation
-
-function hideAllPages() {
-    document.getElementById("home-page").hidden = true;
-    document.getElementById("seller-page").hidden = true;
-    document.getElementById("coming-soon-page").hidden = true;
-}
-
-function openSeller() {
-    hideAllPages();
-    document.getElementById("seller-page").hidden = false;
-
-    if (showingEstimate) {
-        showPriceEstimate();
-    } else {
-        showSellerQuestion();
-    }
-
-    window.scrollTo(0, 0);
-}
-
+// Navigate between screens
 function showPage(pageId) {
+    const homePage =
+        document.getElementById("home-page");
+
+    const sellPage =
+        document.getElementById("sell-page");
+
+    const comingSoonPage =
+        document.getElementById("coming-soon-page");
+
+    // Hide everything first, then reveal the right view
+    homePage.hidden = true;
+    sellPage.hidden = true;
+    comingSoonPage.hidden = true;
+
     if (pageId === "home-page") {
-        hideAllPages();
-        document.getElementById("home-page").hidden = false;
-        window.scrollTo(0, 0);
-        return;
+        homePage.hidden = false;
+    } else if (pageId === "sell-page") {
+        sellPage.hidden = false;
+        startDiagnostic();
+    } else if (pages[pageId]) {
+        document.getElementById(
+            "coming-soon-title"
+        ).textContent = pages[pageId].title;
+
+        document.getElementById(
+            "coming-soon-message"
+        ).textContent = pages[pageId].message;
+
+        comingSoonPage.hidden = false;
+    } else {
+        homePage.hidden = false;
     }
 
-    if (pageId === "sell-page") {
-        openSeller();
-        return;
-    }
-
-    const page = comingSoonPages[pageId];
-
-    if (!page) {
-        showPage("home-page");
-        return;
-    }
-
-    hideAllPages();
-
-    document.getElementById("coming-soon-title").textContent = page[0];
-    document.getElementById("coming-soon-message").textContent = page[1];
-    document.getElementById("coming-soon-page").hidden = false;
-
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
+// Search placeholder
 function searchMarketplace() {
     showPage("search-page");
 }
 
+// Category placeholders
 function filterCategory(category) {
-    showPage(category === "Phones" ? "phones-page" : "tablets-page");
+    if (category === "Phones") {
+        showPage("phones-page");
+    } else if (category === "Tablets") {
+        showPage("tablets-page");
+    }
 }
 
-// Question display
+/* ============================================
+   SELL A DEVICE: DIAGNOSTIC QUESTIONNAIRE
+   ============================================
+   Each option has:
+     label  - text shown to the seller
+     points - 0 (worst) to 3 (best), used for the condition score
+     flag   - optional tag that triggers a note or override in the result
+   Questions with scored: false are collected but not scored.
+*/
 
-function showSellerQuestion() {
-    showingEstimate = false;
+const diagnosticQuestions = [
+    {
+        id: "type",
+        title: "What kind of device are you selling?",
+        scored: false,
+        options: [
+            { label: "Phone" },
+            { label: "Tablet" }
+        ]
+    },
+    {
+        id: "brand",
+        title: "Who makes it?",
+        scored: false,
+        options: [
+            { label: "Apple" },
+            { label: "Samsung" },
+            { label: "Google" },
+            { label: "Other brand" }
+        ]
+    },
+    {
+        id: "power",
+        title: "Does it turn on?",
+        help: "Try holding the power button for 10 seconds.",
+        options: [
+            { label: "Yes, it starts normally", points: 3 },
+            { label: "Only while plugged in", points: 1 },
+            { label: "No, it won't turn on", points: 0, flag: "noPower" }
+        ]
+    },
+    {
+        id: "screenDamage",
+        title: "What does the screen glass look like?",
+        options: [
+            { label: "No scratches or cracks", points: 3 },
+            { label: "Light scratches only", points: 2 },
+            { label: "Cracked, but still usable", points: 1, flag: "cracked" },
+            { label: "Badly shattered", points: 0, flag: "cracked" }
+        ]
+    },
+    {
+        id: "display",
+        title: "How does the display and touch work?",
+        help: "Check for lines, dead spots, flickering, or burn-in.",
+        options: [
+            { label: "Works perfectly", points: 3 },
+            { label: "Minor issues, like a faint spot or slight discoloration", points: 2 },
+            { label: "Dead zones, lines, or unresponsive touch", points: 0 }
+        ]
+    },
+    {
+        id: "body",
+        title: "What shape is the body in?",
+        options: [
+            { label: "Like new", points: 3 },
+            { label: "Light scuffs or scratches", points: 2 },
+            { label: "Dents or deep scratches", points: 1 },
+            { label: "Bent, cracked, or missing pieces", points: 0 }
+        ]
+    },
+    {
+        id: "battery",
+        title: "How is the battery?",
+        options: [
+            { label: "Lasts a full day or close to it", points: 3 },
+            { label: "Drains quickly", points: 1 },
+            { label: "Barely holds a charge", points: 0 },
+            { label: "Swollen, or the case is bulging", points: 0, flag: "swollen" }
+        ]
+    },
+    {
+        id: "cameras",
+        title: "Do the cameras work?",
+        options: [
+            { label: "All cameras work", points: 3 },
+            { label: "Some cameras or the flash don't work", points: 1 },
+            { label: "None of them work", points: 0 }
+        ]
+    },
+    {
+        id: "audio",
+        title: "Do the speakers and microphone work?",
+        options: [
+            { label: "Everything works", points: 3 },
+            { label: "Sound is distorted or one part fails", points: 1 },
+            { label: "No sound or no microphone", points: 0 }
+        ]
+    },
+    {
+        id: "ports",
+        title: "Do the charging port and buttons work?",
+        options: [
+            { label: "All work", points: 3 },
+            { label: "Some are loose, sticky, or unreliable", points: 1 },
+            { label: "Charging doesn't work, or buttons are broken", points: 0 }
+        ]
+    },
+    {
+        id: "water",
+        title: "Has it been exposed to water or moisture?",
+        options: [
+            { label: "No", points: 3 },
+            { label: "Not sure", points: 1, flag: "waterMaybe" },
+            { label: "Yes", points: 0, flag: "water" }
+        ]
+    },
+    {
+        id: "lock",
+        title: "Is the device free of account locks?",
+        help: "For example Apple ID, Google account, or a carrier lock.",
+        options: [
+            { label: "Yes, I've signed out and wiped it", points: 3 },
+            { label: "No, I'm still signed in", points: 1, flag: "signedIn" },
+            { label: "It's locked and I can't get in", points: 0, flag: "locked" }
+        ]
+    },
+    {
+        id: "accessories",
+        title: "What's included with it?",
+        options: [
+            { label: "Original box and charger", points: 3 },
+            { label: "Charger or cable only", points: 2 },
+            { label: "Just the device", points: 1 }
+        ]
+    }
+];
 
-    const question = sellerQuestions[currentQuestion];
-    const container = document.getElementById("seller-questionnaire");
+const diagnosticState = {
+    step: 0,
+    answers: {},   // questionId -> index of selected option
+    done: false
+};
 
-    container.replaceChildren();
+function startDiagnostic() {
+    diagnosticState.step = 0;
+    diagnosticState.answers = {};
+    diagnosticState.done = false;
+    renderDiagnostic();
+}
 
-    const progress = document.createElement("p");
-    progress.className = "question-progress";
-    progress.textContent =
-        `Question ${currentQuestion + 1} of ${sellerQuestions.length}`;
+function renderDiagnostic() {
+    const root = document.getElementById("diagnostic-root");
 
-    const track = document.createElement("div");
-    track.className = "progress-track";
+    if (diagnosticState.done) {
+        root.innerHTML = buildResultHTML();
+        return;
+    }
 
-    const fill = document.createElement("div");
-    fill.className = "progress-fill";
-    fill.style.width =
-        `${((currentQuestion + 1) / sellerQuestions.length) * 100}%`;
+    const total = diagnosticQuestions.length;
+    const step = diagnosticState.step;
+    const question = diagnosticQuestions[step];
+    const selected = diagnosticState.answers[question.id];
+    const percent = Math.round((step / total) * 100);
+    const isLast = step === total - 1;
 
-    track.appendChild(fill);
+    const optionsHTML = question.options.map((option, index) => `
+        <label class="diag-option">
+            <input
+                type="radio"
+                name="${question.id}"
+                value="${index}"
+                ${selected === index ? "checked" : ""}
+                onchange="selectAnswer('${question.id}', ${index})"
+            >
+            <span>${option.label}</span>
+        </label>
+    `).join("");
 
-    const title = document.createElement("h3");
-    title.className = "question-title";
-    title.textContent = question.question;
+    root.innerHTML = `
+        <div class="diag-progress-label">
+            <span>Question ${step + 1} of ${total}</span>
+            <span>${percent}%</span>
+        </div>
+        <div class="diag-progress"
+             role="progressbar"
+             aria-valuemin="0"
+             aria-valuemax="100"
+             aria-valuenow="${percent}">
+            <div class="diag-progress-bar" style="width: ${percent}%"></div>
+        </div>
 
-    container.append(progress, track, title);
+        <fieldset class="diag-question">
+            <legend>${question.title}</legend>
+            ${question.help ? `<p class="diag-help">${question.help}</p>` : ""}
+            <div class="diag-options">${optionsHTML}</div>
+        </fieldset>
 
-    const optionsContainer = document.createElement("div");
-    optionsContainer.className = "seller-options";
+        <div class="diag-nav">
+            <button type="button" class="secondary"
+                    onclick="${step === 0 ? "showPage('home-page')" : "prevQuestion()"}">
+                ${step === 0 ? "Cancel" : "Back"}
+            </button>
+            <button type="button" id="diag-next"
+                    onclick="nextQuestion()"
+                    ${selected === undefined ? "disabled" : ""}>
+                ${isLast ? "See my results" : "Next"}
+            </button>
+        </div>
+    `;
+}
 
-    if (question.text) {
-        const textarea = document.createElement("textarea");
-        textarea.className = "seller-textarea";
-        textarea.placeholder = "Your answer (optional)";
-        textarea.value = sellerAnswers[question.key] || "";
+function selectAnswer(questionId, optionIndex) {
+    diagnosticState.answers[questionId] = optionIndex;
 
-        textarea.addEventListener("input", () => {
-            sellerAnswers[question.key] = textarea.value;
-        });
+    // Enable Next without re-rendering, so focus stays on the option
+    const next = document.getElementById("diag-next");
+    if (next) next.disabled = false;
+}
 
-        optionsContainer.appendChild(textarea);
+function nextQuestion() {
+    const question = diagnosticQuestions[diagnosticState.step];
+    if (diagnosticState.answers[question.id] === undefined) return;
+
+    if (diagnosticState.step === diagnosticQuestions.length - 1) {
+        diagnosticState.done = true;
     } else {
-        const options =
-            typeof question.options === "function"
-                ? question.options()
-                : question.options;
-
-        options.forEach(option => {
-            const label = document.createElement("label");
-            label.className = "seller-option";
-
-            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = "seller-answer";
-            radio.value = option;
-            radio.checked = sellerAnswers[question.key] === option;
-
-            radio.addEventListener("change", () => {
-                if (
-                    question.key === "type" &&
-                    sellerAnswers.type !== option
-                ) {
-                    delete sellerAnswers.model;
-                    delete sellerAnswers.customModel;
-                }
-
-                sellerAnswers[question.key] = option;
-
-                if (question.key === "model") {
-                    if (option !== "Other model") {
-                        delete sellerAnswers.customModel;
-                    }
-                    showSellerQuestion();
-                }
-            });
-
-            const text = document.createElement("span");
-            text.textContent = option;
-
-            label.append(radio, text);
-            optionsContainer.appendChild(label);
-        });
-
-        if (
-            question.key === "model" &&
-            sellerAnswers.model === "Other model"
-        ) {
-            const customInput = document.createElement("input");
-            customInput.type = "text";
-            customInput.className = "seller-text-input";
-            customInput.placeholder = "Enter your device model";
-            customInput.value = sellerAnswers.customModel || "";
-
-            customInput.addEventListener("input", () => {
-                sellerAnswers.customModel = customInput.value;
-            });
-
-            optionsContainer.appendChild(customInput);
-        }
+        diagnosticState.step++;
     }
 
-    container.appendChild(optionsContainer);
-
-    const error = document.createElement("p");
-    error.className = "seller-error";
-    error.setAttribute("role", "alert");
-    container.appendChild(error);
-
-    const navigation = document.createElement("div");
-    navigation.className = "seller-navigation";
-
-    const backButton = document.createElement("button");
-    backButton.type = "button";
-    backButton.className = "seller-secondary";
-    backButton.textContent = "Back";
-    backButton.disabled = currentQuestion === 0;
-
-    backButton.addEventListener("click", () => {
-        if (currentQuestion > 0) {
-            currentQuestion--;
-            showSellerQuestion();
-        }
-    });
-
-    const nextButton = document.createElement("button");
-    nextButton.type = "button";
-    nextButton.textContent =
-        currentQuestion === sellerQuestions.length - 1
-            ? "View Price Estimate"
-            : "Next";
-
-    nextButton.addEventListener("click", () => {
-        if (
-            !question.optional &&
-            !sellerAnswers[question.key]
-        ) {
-            error.textContent = "Please select an answer.";
-            return;
-        }
-
-        if (
-            question.key === "model" &&
-            sellerAnswers.model === "Other model" &&
-            !sellerAnswers.customModel?.trim()
-        ) {
-            error.textContent = "Please enter the device model.";
-            return;
-        }
-
-        if (currentQuestion === sellerQuestions.length - 1) {
-            showPriceEstimate();
-        } else {
-            currentQuestion++;
-            showSellerQuestion();
-        }
-    });
-
-    navigation.append(backButton, nextButton);
-    container.appendChild(navigation);
+    renderDiagnostic();
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Demonstration price estimate
+function prevQuestion() {
+    if (diagnosticState.step > 0) {
+        diagnosticState.step--;
+        renderDiagnostic();
+    }
+}
 
-function calculateEstimate() {
-    const basePrices = {
-        "iPhone 13": 180,
-        "iPhone 14": 240,
-        "Samsung Galaxy S22": 175,
-        "Google Pixel 7": 150,
-        "iPad 9th Generation": 150,
-        "iPad 10th Generation": 210,
-        "iPad Air": 220,
-        "Samsung Galaxy Tab S8": 200
-    };
+// Work out the grade, notes, and recommended path
+function evaluateDiagnostic() {
+    let earned = 0;
+    let possible = 0;
+    const flags = new Set();
 
-    const basePrice =
-        basePrices[sellerAnswers.model] ||
-        (sellerAnswers.type === "Tablet" ? 130 : 120);
+    diagnosticQuestions.forEach(question => {
+        const index = diagnosticState.answers[question.id];
+        const option = question.options[index];
 
-    let price = basePrice;
+        if (option.flag) flags.add(option.flag);
 
-    const adjustments = {
-        storage: {
-            "64 GB": -15,
-            "256 GB": 20,
-            "512 GB or more": 40,
-            "Not sure": -10
-        },
-        exterior: {
-            "Minor scratches": -10,
-            "Cracked glass or noticeable damage": -25,
-            "Bent or severely damaged": -65
-        },
-        screen: {
-            "Cracked but works": -35,
-            "Display problems": -55,
-            "Touchscreen problems": -55,
-            "Does not work": -80,
-            "Not tested": -20
-        },
-        battery: {
-            "80% to 89%": -10,
-            "Below 80%": -25,
-            "Battery does not work": -50,
-            "Unknown": -10
-        },
-        charging: {
-            "Slow or inconsistent": -20,
-            "Does not charge": -45,
-            "Not tested": -10
-        },
-        rearCamera: {
-            "Has problems": -15,
-            "Does not work": -35,
-            "Not tested": -8
-        },
-        frontCamera: {
-            "Has problems": -15,
-            "Does not work": -30,
-            "Not tested": -8
-        },
-        speakers: {
-            "Distorted or quiet": -15,
-            "No sound": -25,
-            "Not tested": -8
-        },
-        microphone: {
-            "Muffled or distorted": -15,
-            "Does not work": -25,
-            "Not tested": -8
-        },
-        wifi: {
-            "Unreliable": -15,
-            "No": -35,
-            "Not tested": -8
-        },
-        bluetooth: {
-            "Unreliable": -10,
-            "No": -20,
-            "Not tested": -5
-        },
-        cellular: {
-            "Some problems": -20,
-            "No": -40,
-            "Not tested": -10
-        },
-        water: {
-            "Yes, but still works": -20,
-            "Yes, and has problems": -60,
-            "Unsure": -10
-        },
-        power: {
-            "Turns on with some issues": -25,
-            "Does not turn on": -90,
-            "Turns on but cannot be used normally": -60
+        if (question.scored !== false) {
+            earned += option.points;
+            possible += 3;
         }
-    };
-
-    Object.entries(adjustments).forEach(([key, values]) => {
-        price += values[sellerAnswers[key]] || 0;
     });
 
-    if (sellerAnswers.accessories === "Original box and charger") {
-        price += 10;
+    const percent = earned / possible;
+
+    let grade;
+    if (percent >= 0.85) grade = "excellent";
+    else if (percent >= 0.65) grade = "good";
+    else if (percent >= 0.40) grade = "fair";
+    else grade = "parts";
+
+    // Serious problems cap the grade no matter what the score says
+    if (flags.has("noPower") || flags.has("swollen") || flags.has("locked")) {
+        grade = "parts";
+    } else if (flags.has("water") && (grade === "excellent" || grade === "good")) {
+        grade = "fair";
     }
 
-    const estimate = Math.max(
-        10,
-        Math.round(price / 5) * 5
-    );
-
-    return { basePrice, estimate };
+    return { grade, flags, percent: Math.round(percent * 100) };
 }
 
-function showPriceEstimate() {
-    showingEstimate = true;
+const gradeInfo = {
+    excellent: {
+        css: "",
+        label: "Excellent condition",
+        heading: "Ready to sell as a working device",
+        text: "Your device is in great shape and should appeal to buyers looking for a dependable phone or tablet."
+    },
+    good: {
+        css: "",
+        label: "Good condition",
+        heading: "Ready to sell as a working device",
+        text: "Your device works well with some signs of wear. It's a good fit for buyers who want a working device at a lower price."
+    },
+    fair: {
+        css: "fair",
+        label: "Fair condition",
+        heading: "Sell as working with disclosed issues, or sell for repair",
+        text: "Your device has noticeable issues. Be upfront about them in your listing, or list it as a repair project."
+    },
+    parts: {
+        css: "parts",
+        label: "Parts or repair",
+        heading: "Best suited for parts or repair",
+        text: "Your device likely needs repair. Its working components could still help someone fix their own phone or tablet."
+    }
+};
 
-    const container = document.getElementById("seller-questionnaire");
-    container.replaceChildren();
+const flagNotes = {
+    swollen: { danger: true, text: "A swollen battery is a fire risk. Stop charging the device and don't ship it yourself. Take it to a battery recycling drop-off." },
+    noPower: { text: "Because the device doesn't turn on, buyers will treat it as a repair or parts listing." },
+    water: { text: "Water exposure can cause hidden damage that shows up later. This must be disclosed in your listing." },
+    waterMaybe: { text: "If you suspect water exposure, say so in your listing so buyers know what to expect." },
+    locked: { text: "Devices locked to an account can't be resold as working. Try recovering the account with the manufacturer first." },
+    signedIn: { text: "Sign out of your accounts and erase the device before you hand it over." },
+    cracked: { text: "Cracked glass should be mentioned in your listing and photos." }
+};
 
-    const result = calculateEstimate();
+function buildResultHTML() {
+    const { grade, flags, percent } = evaluateDiagnostic();
+    const info = gradeInfo[grade];
 
-    const modelName =
-        sellerAnswers.model === "Other model"
-            ? sellerAnswers.customModel
-            : sellerAnswers.model;
+    // Notes, with safety warnings first
+    const noteKeys = Object.keys(flagNotes).filter(key => flags.has(key));
+    const dangerNotes = noteKeys.filter(key => flagNotes[key].danger);
+    const otherNotes = noteKeys.filter(key => !flagNotes[key].danger);
 
-    const card = document.createElement("div");
-    card.className = "estimate-card";
+    const notesHTML = (keys, extraClass) => keys.length ? `
+        <div class="diag-notes ${extraClass}" role="note">
+            <ul>${keys.map(key => `<li>${flagNotes[key].text}</li>`).join("")}</ul>
+        </div>` : "";
 
-    const heading = document.createElement("h3");
-    heading.className = "question-title";
-    heading.textContent = "Your Estimated Device Value";
+    // Summary of the seller's answers
+    const summaryHTML = diagnosticQuestions.map(question => {
+        const option = question.options[diagnosticState.answers[question.id]];
+        return `<div><dt>${question.title.replace(/\?$/, "")}</dt><dd>${option.label}</dd></div>`;
+    }).join("");
 
-    const model = document.createElement("p");
-    model.className = "estimate-model";
-    model.textContent = modelName;
+    return `
+        <div class="diag-result">
+            <span class="diag-grade ${info.css}">${info.label} · ${percent}% score</span>
+            <h2>${info.heading}</h2>
+            <p>${info.text}</p>
 
-    const price = document.createElement("div");
-    price.className = "estimated-price";
-    price.textContent = `$${result.estimate}`;
+            ${notesHTML(dangerNotes, "danger")}
+            ${notesHTML(otherNotes, "")}
 
-    const note = document.createElement("p");
-    note.className = "seller-note";
-    note.textContent =
-        "This is a demonstration estimate based on seller-reported " +
-        "answers, not a verified diagnostic or live market appraisal. " +
-        "Damaged devices may still contain reusable parts. " +
-        "Activation locks must be resolved before a future sale.";
+            <dl class="diag-summary">${summaryHTML}</dl>
 
-    card.append(heading, model, price, note);
-    container.appendChild(card);
+            <p>Price estimates and listing tools are coming soon.</p>
 
-    const navigation = document.createElement("div");
-    navigation.className = "seller-navigation";
-
-    const reviewButton = document.createElement("button");
-    reviewButton.type = "button";
-    reviewButton.textContent = "Review Answers";
-    reviewButton.className = "seller-secondary";
-    reviewButton.addEventListener("click", () => {
-        currentQuestion = sellerQuestions.length - 1;
-        showSellerQuestion();
-    });
-
-    const restartButton = document.createElement("button");
-    restartButton.type = "button";
-    restartButton.textContent = "Start Over";
-    restartButton.addEventListener("click", () => {
-        sellerAnswers = {};
-        currentQuestion = 0;
-        showSellerQuestion();
-    });
-
-    const homeButton = document.createElement("button");
-    homeButton.type = "button";
-    homeButton.textContent = "Back to Home";
-    homeButton.className = "seller-secondary";
-    homeButton.addEventListener("click", () => {
-        showPage("home-page");
-    });
-
-    navigation.append(reviewButton, restartButton, homeButton);
-    container.appendChild(navigation);
+            <div class="diag-actions">
+                <button type="button" class="diag-secondary" onclick="startDiagnostic()">
+                    Start over
+                </button>
+                <button type="button" onclick="showPage('home-page')">
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    `;
 }
 
-// Initialize
-
+// Allow Enter key to trigger search
 document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("marketplace-search");
+    const searchInput =
+        document.getElementById("marketplace-search");
 
     if (searchInput) {
         searchInput.addEventListener("keydown", event => {
@@ -607,5 +479,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Always begin on the homepage
     showPage("home-page");
 });
