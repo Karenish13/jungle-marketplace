@@ -1,4 +1,3 @@
-
 /* JUNGLE MARKETPLACE */
 
 * {
@@ -14,7 +13,7 @@ body {
     background: #f4f8f4;
     color: #173d29;
     margin: 0;
-    padding-bottom: 90px;
+    padding-bottom: 85px;
 }
 
 /* HEADER */
@@ -36,6 +35,7 @@ body {
 }
 
 .logo-placeholder {
+    color: #f0d58a;
     font-size: 34px;
 }
 
@@ -64,37 +64,7 @@ h2 {
     margin-bottom: 14px;
 }
 
-/* BUTTONS */
-
-button {
-    background: #237a4b;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    padding: 13px 18px;
-    font-size: 15px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-button:hover {
-    background: #145c36;
-}
-
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-    outline: 3px solid #e3b84d;
-    outline-offset: 3px;
-}
-
-button:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
-}
-
-/* SEARCH */
+/* SEARCH BAR */
 
 .search-section {
     display: flex;
@@ -114,6 +84,30 @@ button:disabled {
     font-size: 15px;
 }
 
+/* BUTTONS */
+
+button {
+    background: #237a4b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 13px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background: #145c36;
+    transform: translateY(-2px);
+}
+
+button:focus-visible {
+    outline: 3px solid #e3b84d;
+    outline-offset: 3px;
+}
+
 /* WELCOME */
 
 .welcome {
@@ -131,7 +125,7 @@ button:disabled {
     line-height: 1.6;
 }
 
-/* MAIN ACTIONS */
+/* QUICK ACTIONS */
 
 .quick-actions {
     display: grid;
@@ -163,6 +157,7 @@ button:disabled {
     border: 1px solid #dce8df;
     padding: 20px 10px;
     border-radius: 14px;
+    box-shadow: 0 2px 8px #00000008;
 }
 
 .category-grid button:hover {
@@ -187,6 +182,7 @@ button:disabled {
 .marketplace-preview h3 {
     color: #174d32;
     font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .marketplace-preview p {
@@ -217,27 +213,15 @@ button:disabled {
     line-height: 1.6;
 }
 
-/* SHARED PAGE STYLES */
+/* COMING SOON PAGE */
 
-.page,
-.seller-panel {
+.page {
     background: white;
-    margin: 30px auto;
-    padding: 30px;
+    margin-top: 30px;
+    padding: 40px 25px;
     border-radius: 16px;
     box-shadow: 0 2px 12px #00000012;
 }
-
-.seller-panel {
-    max-width: 750px;
-}
-
-.seller-header p {
-    color: #557263;
-    line-height: 1.6;
-}
-
-/* COMING SOON */
 
 .coming-soon-content {
     text-align: center;
@@ -249,182 +233,15 @@ button:disabled {
 }
 
 .coming-soon-content h2 {
+    color: #174d32;
     font-size: 30px;
+    margin-top: 20px;
 }
 
 .coming-soon-content p {
     color: #557263;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 25px;
-}
-
-/* SELLER PROGRESS */
-
-.question-progress {
-    font-weight: bold;
-    color: #557263;
-    margin-top: 28px;
-}
-
-.progress-track {
-    width: 100%;
-    height: 10px;
-    background: #e5f1e8;
-    border-radius: 20px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: #237a4b;
-    transition: width 0.2s;
-}
-
-.question-title {
-    color: #174d32;
-    font-size: 23px;
-    margin: 26px 0 20px;
-}
-
-/* QUESTION OPTIONS */
-
-.seller-options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.seller-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background: #f4f8f4;
-    border: 1px solid #dce8df;
-    padding: 16px;
-    border-radius: 12px;
-    cursor: pointer;
-}
-
-.seller-option:hover {
-    background: #e9f5ed;
-}
-
-.seller-option:has(input:checked) {
-    background: #e2f1e7;
-    border-color: #237a4b;
-}
-
-.seller-option input {
-    accent-color: #237a4b;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-}
-
-.seller-option span {
-    line-height: 1.4;
-}
-
-/* CUSTOM MODEL AND REASON */
-
-.custom-model {
-    margin-top: 12px;
-}
-
-.custom-model label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-.seller-text-input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #d6e2d9;
-    border-radius: 10px;
-    font: inherit;
-}
-
-.seller-textarea {
-    width: 100%;
-    min-height: 110px;
-    padding: 13px;
-    border: 1px solid #d6e2d9;
-    border-radius: 10px;
-    font: inherit;
-    resize: vertical;
-}
-
-/* ERROR MESSAGE */
-
-.seller-error {
-    color: #b42318;
-    font-weight: bold;
-    margin-top: 12px;
-}
-
-.seller-error:empty {
-    display: none;
-}
-
-/* NAVIGATION */
-
-.seller-navigation {
-    display: flex;
-    gap: 12px;
-    margin-top: 28px;
-    flex-wrap: wrap;
-}
-
-.seller-navigation button {
-    flex: 1;
-    min-width: 110px;
-}
-
-.seller-secondary {
-    background: #e5f1e8;
-    color: #174d32;
-}
-
-.seller-secondary:hover {
-    background: #d3e9d9;
-}
-
-/* ESTIMATE */
-
-.estimate-card {
-    text-align: center;
-    padding: 20px 0;
-}
-
-.estimate-model {
-    color: #557263;
-    font-size: 18px;
-}
-
-.estimated-price {
-    color: #174d32;
-    font-size: 48px;
-    font-weight: 800;
-    margin: 20px 0;
-}
-
-.estimate-breakdown {
-    background: #f4f8f4;
-    border-radius: 12px;
-    padding: 18px;
-    text-align: left;
-    line-height: 1.8;
-}
-
-.seller-note {
-    background: #fff7df;
-    color: #70571b;
-    border-radius: 10px;
-    padding: 15px;
-    line-height: 1.6;
-    margin-top: 20px;
 }
 
 /* BOTTOM NAVIGATION */
@@ -455,7 +272,7 @@ button:disabled {
     color: #174d32;
 }
 
-/* MOBILE AND TABLET */
+/* MOBILE LAYOUT */
 
 @media (max-width: 600px) {
     main {
@@ -475,6 +292,10 @@ button:disabled {
         padding: 18px 8px;
     }
 
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .category-grid button {
         padding: 16px 8px;
         font-size: 14px;
@@ -492,27 +313,248 @@ button:disabled {
         width: 100%;
     }
 
-    .page,
-    .seller-panel {
-        padding: 20px 16px;
-    }
-
-    .question-title {
-        font-size: 20px;
-    }
-
-    .seller-navigation {
-        flex-direction: column;
-    }
-
     .bottom-nav button {
         font-size: 10px;
         padding: 8px 3px;
     }
 
-    .estimated-price {
-        font-size: 40px;
+    .page {
+        padding: 25px 15px;
     }
+
+    .coming-soon-content h2 {
+        font-size: 25px;
+    }
+}
+
+/* ============================================
+   SELL A DEVICE: DIAGNOSTIC QUESTIONNAIRE
+   ============================================ */
+
+.diag-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: bold;
+    color: #557263;
+    margin-bottom: 8px;
+}
+
+.diag-progress {
+    height: 8px;
+    background: #e3f0e7;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.diag-progress-bar {
+    height: 100%;
+    background: #237a4b;
+    border-radius: 8px;
+    transition: width 0.3s;
+}
+
+.diag-question {
+    border: none;
+    padding: 0;
+    margin: 0 0 8px;
+    min-width: 0;
+}
+
+.diag-question legend {
+    font-size: 22px;
+    font-weight: bold;
+    color: #173d29;
+    margin-bottom: 6px;
+    padding: 0;
+}
+
+.diag-help {
+    color: #557263;
+    line-height: 1.5;
+    margin: 0 0 18px;
+    font-size: 14px;
+}
+
+.diag-options {
+    display: grid;
+    gap: 10px;
+}
+
+.diag-option {
+    position: relative;
+    display: block;
+}
+
+.diag-option input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    cursor: pointer;
+}
+
+.diag-option span {
+    display: block;
+    padding: 15px 16px;
+    border: 2px solid #dce8df;
+    border-radius: 12px;
+    background: white;
+    font-size: 15px;
+    line-height: 1.4;
+    transition: border-color 0.15s, background 0.15s;
+}
+
+.diag-option span small {
+    display: block;
+    color: #557263;
+    font-size: 13px;
+    margin-top: 2px;
+}
+
+.diag-option:hover span {
+    border-color: #9cc9ab;
+}
+
+.diag-option input:checked + span {
+    border-color: #237a4b;
+    background: #e5f1e8;
+    font-weight: bold;
+}
+
+.diag-option input:focus-visible + span {
+    outline: 3px solid #e3b84d;
+    outline-offset: 2px;
+}
+
+.diag-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.diag-nav button {
+    flex: 1;
+}
+
+.diag-nav .secondary,
+.diag-secondary {
+    background: white;
+    color: #174d32;
+    border: 2px solid #dce8df;
+}
+
+.diag-nav .secondary:hover,
+.diag-secondary:hover {
+    background: #e5f1e8;
+}
+
+.diag-nav button:disabled {
+    background: #b9cfc0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* RESULTS */
+
+.diag-result {
+    text-align: center;
+}
+
+.diag-grade {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 12px;
+    background: #e5f1e8;
+    color: #25633e;
+}
+
+.diag-grade.fair   { background: #fbf0d0; color: #6e5410; }
+.diag-grade.parts  { background: #f6dede; color: #7d2b2b; }
+
+.diag-result h2 {
+    font-size: 28px;
+    margin: 0 0 10px;
+}
+
+.diag-result > p {
+    color: #557263;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 20px;
+}
+
+.diag-notes {
+    text-align: left;
+    background: #fdf6e0;
+    border-left: 4px solid #c8a85b;
+    border-radius: 8px;
+    padding: 14px 16px 14px 20px;
+    margin: 0 0 20px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.diag-notes.danger {
+    background: #fbeaea;
+    border-left-color: #b34040;
+}
+
+.diag-notes ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.diag-summary {
+    text-align: left;
+    border: 1px solid #dce8df;
+    border-radius: 12px;
+    margin: 0 0 24px;
+    overflow: hidden;
+}
+
+.diag-summary div {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-bottom: 1px solid #edf3ef;
+}
+
+.diag-summary div:last-child {
+    border-bottom: none;
+}
+
+.diag-summary dt {
+    color: #557263;
+}
+
+.diag-summary dd {
+    margin: 0;
+    font-weight: bold;
+    text-align: right;
+}
+
+.diag-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.diag-actions button {
+    flex: 1;
+}
+
+@media (max-width: 600px) {
+    .diag-question legend { font-size: 19px; }
+    .diag-actions { flex-direction: column; }
 }
 
 
