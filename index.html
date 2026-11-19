@@ -58,6 +58,7 @@
                     <button type="button" onclick="filterCategory('Phones')">
                         📱 Phones
                     </button>
+
                     <button type="button" onclick="filterCategory('Tablets')">
                         📟 Tablets
                     </button>
@@ -66,13 +67,17 @@
 
             <section class="featured">
                 <h2>Marketplace</h2>
+
                 <div class="marketplace-preview">
                     <span class="preview-icon">♻️</span>
+
                     <h3>Something Great Is Growing</h3>
+
                     <p>
                         Our phone and tablet marketplace is
                         currently under development.
                     </p>
+
                     <span class="status">Coming Soon</span>
                 </div>
             </section>
@@ -86,44 +91,60 @@
             </section>
         </div>
 
-        <!-- PLACEHOLDER PAGE -->
+        <!-- SELLER QUESTIONNAIRE -->
+        <section id="seller-page" class="seller-panel" hidden>
+            <h2>Sell a Device</h2>
+
+            <p>
+                Answer a few questions about your phone or tablet
+                to see an illustrative price estimate.
+            </p>
+
+            <div id="seller-questionnaire"></div>
+        </section>
+
+        <!-- COMING SOON PAGE -->
         <section id="coming-soon-page" class="page" hidden>
             <div class="coming-soon-content">
                 <span class="coming-soon-icon">🌱</span>
+
                 <h2 id="coming-soon-title">Coming Soon!</h2>
+
                 <p id="coming-soon-message">
                     We're still growing this part of JUNGLE.
                 </p>
 
-                <button type="button" onclick="showPage('home-page')">
+                <button
+                    type="button"
+                    onclick="showPage('home-page')"
+                >
                     Back to Home
                 </button>
             </div>
         </section>
     </main>
 
+    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav" aria-label="Main navigation">
         <button type="button" onclick="showPage('home-page')">
             ⌂ Home
         </button>
+
         <button type="button" onclick="showPage('explore-page')">
             ⌕ Explore
         </button>
+
         <button type="button" onclick="showPage('sell-page')">
             ＋ Sell
         </button>
+
         <button type="button" onclick="showPage('listings-page')">
             ▤ My Listings
         </button>
+
         <button type="button" onclick="showPage('profile-page')">
             ♙ Profile
         </button>
-    </nav>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
     </nav>
 
     <script src="script.js"></script>
