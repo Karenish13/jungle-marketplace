@@ -1,23 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>JUNGLE Marketplace</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=4">
+    <script src="script.js?v=4" defer></script>
 </head>
+
 <body>
 
+    <!-- HEADER -->
     <header class="app-header">
         <div class="brand">
             <span class="logo-placeholder">🧭</span>
             <h1>JUNGLE ♻</h1>
         </div>
+
         <p>Repair • Reuse • Reduce</p>
     </header>
 
     <main>
+
         <!-- HOME PAGE -->
         <div id="home-page">
 
@@ -28,13 +34,18 @@
                     placeholder="Search phones, tablets, or parts..."
                     aria-label="Search marketplace"
                 >
-                <button type="button" onclick="searchMarketplace()">
+
+                <button
+                    type="button"
+                    onclick="searchMarketplace()"
+                >
                     Search
                 </button>
             </section>
 
             <section class="welcome">
                 <h2>Give Your Electronics a Second Life</h2>
+
                 <p>
                     Find replacement parts for phones and tablets
                     or give your unwanted devices a new purpose.
@@ -42,11 +53,17 @@
             </section>
 
             <section class="quick-actions">
-                <button type="button" onclick="showPage('sell-page')">
+                <button
+                    type="button"
+                    onclick="openSeller()"
+                >
                     📱 Sell a Device
                 </button>
 
-                <button type="button" onclick="showPage('explore-page')">
+                <button
+                    type="button"
+                    onclick="showPage('explore-page')"
+                >
                     🔧 Find Parts
                 </button>
             </section>
@@ -55,11 +72,17 @@
                 <h2>Browse Categories</h2>
 
                 <div class="category-grid">
-                    <button type="button" onclick="filterCategory('Phones')">
+                    <button
+                        type="button"
+                        onclick="filterCategory('Phones')"
+                    >
                         📱 Phones
                     </button>
 
-                    <button type="button" onclick="filterCategory('Tablets')">
+                    <button
+                        type="button"
+                        onclick="filterCategory('Tablets')"
+                    >
                         📟 Tablets
                     </button>
                 </div>
@@ -74,8 +97,8 @@
                     <h3>Something Great Is Growing</h3>
 
                     <p>
-                        Our phone and tablet marketplace is
-                        currently under development.
+                        Our phone and tablet marketplace
+                        is currently under development.
                     </p>
 
                     <span class="status">Coming Soon</span>
@@ -84,31 +107,42 @@
 
             <section class="mission">
                 <h2>Why Choose JUNGLE?</h2>
+
                 <p>
                     Reduce electronic waste, save money,
                     and help useful technology find a second life.
                 </p>
             </section>
+
         </div>
 
-        <!-- SELLER QUESTIONNAIRE -->
+        <!-- SELL A DEVICE PAGE -->
         <section id="seller-page" class="seller-panel" hidden>
-            <h2>Sell a Device</h2>
 
-            <p>
-                Answer a few questions about your phone or tablet
-                to see an illustrative price estimate.
-            </p>
+            <div class="seller-header">
+                <h2>Sell a Device</h2>
 
+                <p>
+                    Tell us about your phone or tablet.
+                    We'll use your answers to create
+                    an estimated device value.
+                </p>
+            </div>
+
+            <!-- QUESTIONS APPEAR HERE -->
             <div id="seller-questionnaire"></div>
+
         </section>
 
-        <!-- COMING SOON PAGE -->
+        <!-- BUYER AND OTHER PLACEHOLDER PAGES -->
         <section id="coming-soon-page" class="page" hidden>
+
             <div class="coming-soon-content">
                 <span class="coming-soon-icon">🌱</span>
 
-                <h2 id="coming-soon-title">Coming Soon!</h2>
+                <h2 id="coming-soon-title">
+                    Coming Soon!
+                </h2>
 
                 <p id="coming-soon-message">
                     We're still growing this part of JUNGLE.
@@ -121,32 +155,50 @@
                     Back to Home
                 </button>
             </div>
+
         </section>
+
     </main>
 
     <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav" aria-label="Main navigation">
-        <button type="button" onclick="showPage('home-page')">
+
+        <button
+            type="button"
+            onclick="showPage('home-page')"
+        >
             ⌂ Home
         </button>
 
-        <button type="button" onclick="showPage('explore-page')">
+        <button
+            type="button"
+            onclick="showPage('explore-page')"
+        >
             ⌕ Explore
         </button>
 
-        <button type="button" onclick="showPage('sell-page')">
+        <button
+            type="button"
+            onclick="openSeller()"
+        >
             ＋ Sell
         </button>
 
-        <button type="button" onclick="showPage('listings-page')">
+        <button
+            type="button"
+            onclick="showPage('listings-page')"
+        >
             ▤ My Listings
         </button>
 
-        <button type="button" onclick="showPage('profile-page')">
+        <button
+            type="button"
+            onclick="showPage('profile-page')"
+        >
             ♙ Profile
         </button>
+
     </nav>
 
-    <script src="script.js"></script>
 </body>
 </html>
