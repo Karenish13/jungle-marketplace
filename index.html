@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +7,12 @@
 
     <title>JUNGLE Marketplace</title>
 
-    <link rel="stylesheet" href="style.css?v=4">
-    <script src="script.js?v=4" defer></script>
+    <link rel="stylesheet" href="style.css?v=5">
+    <script src="script.js?v=5" defer></script>
 </head>
 
 <body>
 
-    <!-- HEADER -->
     <header class="app-header">
         <div class="brand">
             <span class="logo-placeholder">🧭</span>
@@ -32,13 +32,9 @@
                     type="search"
                     id="marketplace-search"
                     placeholder="Search phones, tablets, or parts..."
-                    aria-label="Search marketplace"
                 >
 
-                <button
-                    type="button"
-                    onclick="searchMarketplace()"
-                >
+                <button type="button" onclick="searchMarketplace()">
                     Search
                 </button>
             </section>
@@ -47,23 +43,17 @@
                 <h2>Give Your Electronics a Second Life</h2>
 
                 <p>
-                    Find replacement parts for phones and tablets
-                    or give your unwanted devices a new purpose.
+                    Find replacement parts or give your
+                    unwanted devices a new purpose.
                 </p>
             </section>
 
             <section class="quick-actions">
-                <button
-                    type="button"
-                    onclick="openSeller()"
-                >
+                <button type="button" onclick="openSeller()">
                     📱 Sell a Device
                 </button>
 
-                <button
-                    type="button"
-                    onclick="showPage('explore-page')"
-                >
+                <button type="button" onclick="showPage('explore-page')">
                     🔧 Find Parts
                 </button>
             </section>
@@ -72,17 +62,11 @@
                 <h2>Browse Categories</h2>
 
                 <div class="category-grid">
-                    <button
-                        type="button"
-                        onclick="filterCategory('Phones')"
-                    >
+                    <button type="button" onclick="filterCategory('Phones')">
                         📱 Phones
                     </button>
 
-                    <button
-                        type="button"
-                        onclick="filterCategory('Tablets')"
-                    >
+                    <button type="button" onclick="filterCategory('Tablets')">
                         📟 Tablets
                     </button>
                 </div>
@@ -97,11 +81,8 @@
                     <h3>Something Great Is Growing</h3>
 
                     <p>
-                        Our phone and tablet marketplace
-                        is currently under development.
+                        Our marketplace is currently under development.
                     </p>
-
-                    <span class="status">Coming Soon</span>
                 </div>
             </section>
 
@@ -116,85 +97,55 @@
 
         </div>
 
-        <!-- SELL A DEVICE PAGE -->
+        <!-- SELLER QUESTIONNAIRE -->
         <section id="seller-page" class="seller-panel" hidden>
-
             <div class="seller-header">
                 <h2>Sell a Device</h2>
 
                 <p>
-                    Tell us about your phone or tablet.
-                    We'll use your answers to create
-                    an estimated device value.
+                    Answer a few questions about your phone or tablet
+                    to receive an estimated device value.
                 </p>
             </div>
 
-            <!-- QUESTIONS APPEAR HERE -->
             <div id="seller-questionnaire"></div>
-
         </section>
 
-        <!-- BUYER AND OTHER PLACEHOLDER PAGES -->
+        <!-- UNFINISHED BUYER FEATURES -->
         <section id="coming-soon-page" class="page" hidden>
-
             <div class="coming-soon-content">
                 <span class="coming-soon-icon">🌱</span>
 
-                <h2 id="coming-soon-title">
-                    Coming Soon!
-                </h2>
+                <h2 id="coming-soon-title">Coming Soon</h2>
+                <p id="coming-soon-message"></p>
 
-                <p id="coming-soon-message">
-                    We're still growing this part of JUNGLE.
-                </p>
-
-                <button
-                    type="button"
-                    onclick="showPage('home-page')"
-                >
+                <button type="button" onclick="showPage('home-page')">
                     Back to Home
                 </button>
             </div>
-
         </section>
 
     </main>
 
-    <!-- BOTTOM NAVIGATION -->
     <nav class="bottom-nav" aria-label="Main navigation">
 
-        <button
-            type="button"
-            onclick="showPage('home-page')"
-        >
+        <button type="button" onclick="showPage('home-page')">
             ⌂ Home
         </button>
 
-        <button
-            type="button"
-            onclick="showPage('explore-page')"
-        >
+        <button type="button" onclick="showPage('explore-page')">
             ⌕ Explore
         </button>
 
-        <button
-            type="button"
-            onclick="openSeller()"
-        >
+        <button type="button" onclick="openSeller()">
             ＋ Sell
         </button>
 
-        <button
-            type="button"
-            onclick="showPage('listings-page')"
-        >
+        <button type="button" onclick="showPage('listings-page')">
             ▤ My Listings
         </button>
 
-        <button
-            type="button"
-            onclick="showPage('profile-page')"
-        >
+        <button type="button" onclick="showPage('profile-page')">
             ♙ Profile
         </button>
 
@@ -202,3 +153,6 @@
 
 </body>
 </html>
+
+
+      
